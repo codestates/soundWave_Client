@@ -3,7 +3,7 @@ name: "[Retrospect] N주차 회고 - 이름"
 about: Describe this issue template's purpose here.
 title: ''
 labels: ''
-assignees: mrsimplelife, Hal-ang
+assignees: Hal-ang, mrsimplelife
 
 ---
 
