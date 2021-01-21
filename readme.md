@@ -14,7 +14,7 @@ REACT_APP_REDIRECT_URL=https://localhost:3000
 ### 실행
 ```
 npm i
-npm server
+npm run server
 npm start
 ```
 

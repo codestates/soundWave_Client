@@ -7,7 +7,7 @@ type NoiseItemProps = {
   url: string;
   info: [string, IconType];
 };
-const Container = styled.div`
+export const Container = styled.div`
   position: relative;
   width: 150px;
   height: 150px;

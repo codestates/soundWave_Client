@@ -6,11 +6,14 @@ import { IoIosCloudyNight } from "react-icons/io";
 import styled from "styled-components";
 import { getNoises, Noise } from "../../api";
 import NoiseItem from "./NoiseItem";
+import PlusMusic from "./PlusMusic";
 const Container = styled.div`
   display: flex;
   position: absolute;
   bottom: 0;
-  z-index: 100;
+  width: 100%;
+  min-width: 1140px;
+  justify-content: center;
 `;
 const icons: Record<string, [string, IconType]> = {
   rain: ["Rainy Day", FaCloudRain],
@@ -34,7 +37,10 @@ function Footer() {
   ));
   return (
     <>
-      <Container>{noiselist}</Container>
+      <Container>
+        {noiselist}
+        <PlusMusic />
+      </Container>
     </>
   );
 }
