@@ -1,15 +1,20 @@
-import React from 'react';
-import raintest from '../src/jeongho/rainEffect';
-import './app.css';
+import { Route, Switch } from "react-router-dom";
+import About from "./page/About";
+import Main from "./page/Main";
+import "./App.css";
 
 function App() {
   return (
-    <div className="app">
-      hello, world!
-      <div>
-        {raintest()}
-      </div>
-    </div>
+    <>
+      <Switch>
+        <Route path="/about">
+          <About />
+        </Route>
+        <Route path="/">
+          <Main />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
