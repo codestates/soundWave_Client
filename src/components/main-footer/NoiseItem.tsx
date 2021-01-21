@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, memo } from "react";
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { IconType } from "react-icons";
 import { BsFillPlayFill, BsStopFill } from "react-icons/bs";
@@ -96,7 +96,7 @@ function NoiseItem({ url, info }: NoiseItemProps) {
         onMouseEnter={showNoiseVolumeController}
         onMouseLeave={hideNoiseVolumeController}
       >
-        <ToggleButton onClick={toggleNoise} >
+        <ToggleButton onClick={toggleNoise}>
           <Icon size="50" />
           <NoiseName>{name}</NoiseName>
           {isPlaying ? (
