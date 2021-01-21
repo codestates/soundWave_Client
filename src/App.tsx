@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
 import About from "./page/About";
 import Main from "./page/Main";
+import "./app.css";
 
 function App() {
   return (
