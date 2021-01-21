@@ -8,7 +8,9 @@ import { getNoises, Noise } from "../../api";
 import NoiseItem from "./NoiseItem";
 const Container = styled.div`
   display: flex;
-  
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
 `;
 const icons: Record<string, [string, IconType]> = {
   rain: ["Rainy Day", FaCloudRain],
