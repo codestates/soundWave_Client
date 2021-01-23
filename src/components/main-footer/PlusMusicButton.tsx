@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Container, IconEngrave } from "./NoiseItem";
 import { IoMusicalNotesSharp } from "react-icons/io5";
 import { TiPlusOutline } from "react-icons/ti";
+import { useDispatch } from "react-redux";
+import { openSearch } from "../../reducer/musicSearchReducer";
 const Border = styled.div`
   border: 1px white dashed;
   border-radius: 10px;
@@ -30,12 +32,16 @@ const Circle = styled.div`
     box-shadow: inset 0px -3px 1px 1px #232b30;
   }
 `;
-function PlusMusic() {
+function PlusMusicButton() {
+  const dispatch = useDispatch();
+  function openSearchModal() {
+    dispatch(openSearch());
+  }
   return (
     <>
       <Container>
         <Border>
-          <Circle>
+          <Circle onClick={openSearchModal}>
             <TiPlusOutline size="40" style={IconEngrave} />
             <IoMusicalNotesSharp size="40" style={IconEngrave} />
           </Circle>
@@ -45,4 +51,4 @@ function PlusMusic() {
   );
 }
 
-export default PlusMusic;
+export default PlusMusicButton;

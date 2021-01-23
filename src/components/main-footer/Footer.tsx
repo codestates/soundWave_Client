@@ -6,13 +6,12 @@ import { IoIosCloudyNight } from "react-icons/io";
 import styled from "styled-components";
 import { getNoises, Noise } from "../../api";
 import NoiseItem from "./NoiseItem";
-import PlusMusic from "./PlusMusic";
-const Container = styled.div`
+import PlusMusicButton from "./PlusMusicButton";
+const ListContainer = styled.div`
   display: flex;
   position: absolute;
   bottom: 0;
   width: 100%;
-  min-width: 1140px;
   justify-content: center;
 `;
 const icons: Record<string, [string, IconType]> = {
@@ -37,10 +36,10 @@ function Footer() {
   ));
   return (
     <>
-      <Container>
+      <ListContainer>
         {noiselist}
-        <PlusMusic />
-      </Container>
+        <PlusMusicButton />
+      </ListContainer>
     </>
   );
 }

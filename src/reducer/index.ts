@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-const rootReducer = combineReducers({});
+import musicSearchReducer from "./musicSearchReducer";
+const rootReducer = combineReducers({
+  musicSearch: musicSearchReducer,
+});
 const store = configureStore({
   reducer: rootReducer,
 });
+export type RootState = ReturnType<typeof rootReducer>;
 export default store;
