@@ -1,6 +1,6 @@
 ### 현재상태
 ![Jan-21-2021 12-53-11](https://user-images.githubusercontent.com/22779951/105278032-05a26080-5be8-11eb-8e3f-5db115153dbd.gif)
-
+![Jan-24-2021 07-40-33](https://user-images.githubusercontent.com/22779951/105616083-8e531380-5e17-11eb-9a19-7aed82d1311b.gif)
 ### 환경변수 파일 필요합니다.
 
 `.env.development.local`
