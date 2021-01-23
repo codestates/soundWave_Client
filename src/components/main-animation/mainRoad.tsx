@@ -1,4 +1,3 @@
-import React from "react";
 import streetLamp from "./streetLamp";
 import bounceCar from "./bounceCar";
 import "./mainRoad.css";
@@ -9,7 +8,7 @@ function mainRoad() {
     <div className="mainRoad">
       {streetLamp()}
       {bounceCar()}
-      <img id="road" src={longRoadimage}></img>;
+      <img id="road" src={longRoadimage} alt="" />;
     </div>
   );
 }

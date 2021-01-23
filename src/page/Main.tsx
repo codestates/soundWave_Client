@@ -20,10 +20,10 @@ function Main() {
   );
   return (
     <Container>
-      {/* {raintest()} */}
+      {raintest()}
       {mainRoad()}
-      {/* {streetLamp()} */}
-      {/* {bounceCar()}; */}
+      {streetLamp()}
+      {bounceCar()};
       <Footer />
       {isSearchOpen && (
         <Modal>
