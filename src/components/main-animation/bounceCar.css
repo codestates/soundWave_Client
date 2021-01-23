@@ -1,0 +1,55 @@
+.bounceCar {
+  position: absolute;
+  top: 120px;
+  left: 70px;
+  margin: 0;
+  padding: 0;
+  width: 5cm;
+  height: 5cm;
+  z-index: -2;
+  /* border-style: solid;
+  border-color: blue; */
+}
+
+#carFrame {
+  position: absolute;
+  left: -235px;
+  top: -220px;
+  margin: 0;
+  padding: 0;
+  width: 18cm;
+  height: 18cm;
+  animation: bounce 0.5s linear infinite;
+  /* border-style: solid;
+  border-color: green; */
+}
+
+@keyframes bounce {
+  0% {
+    top: -220px;
+  }
+
+  50% {
+    top: -223px;
+  }
+
+  70% {
+    top: -226px;
+  }
+
+  100% {
+    top: -220px;
+  }
+}
+
+#carWheel {
+  position: absolute;
+  left: -235px;
+  top: -220px;
+  margin: 0;
+  padding: 0;
+  width: 18cm;
+  height: 18cm;
+  /* border-style: solid;
+  border-color: yellow; */
+}
