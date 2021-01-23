@@ -1,5 +1,7 @@
 .lampAndLight {
   position: absolute;
+  top: -25px;
+  left: 20px;
   margin: 0;
   padding: 0;
   width: 7cm;
