@@ -5,6 +5,10 @@ import { RootState } from "../reducer";
 import Modal from "../components/main-search/Modal";
 import styled from "styled-components";
 import SearchForm from "../components/main-search/SearchForm";
+import streetLamp from "../components/main-animation/streetLamp";
+import bounceCar from "../components/main-animation/bounceCar";
+import mainRoad from "../components/main-animation/mainRoad";
+
 const Container = styled.div`
   height: 100%;
   position: relative;
@@ -17,6 +21,9 @@ function Main() {
   return (
     <Container>
       {/* {raintest()} */}
+      {mainRoad()}
+      {/* {streetLamp()} */}
+      {/* {bounceCar()}; */}
       <Footer />
       {isSearchOpen && (
         <Modal>
@@ -26,4 +33,5 @@ function Main() {
     </Container>
   );
 }
+
 export default Main;

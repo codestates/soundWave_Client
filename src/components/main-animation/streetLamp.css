@@ -1,0 +1,43 @@
+.lampAndLight {
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  margin: 0;
+  padding: 0;
+  width: 7cm;
+  height: 8cm;
+  /* border-style: solid;
+  border-color: white; */
+}
+
+#streetLamp {
+  position: absolute;
+  top: -5.5cm;
+  left: -5.5cm;
+  margin: 0;
+  padding: 0;
+  height: 20cm;
+  /* border-style: solid;
+  border-color: green; */
+}
+
+#lampLight {
+  position: absolute;
+  top: 2.1cm;
+  left: 2.4cm;
+  margin: 0;
+  padding: 0;
+  height: 4.9cm;
+  width: 2.7cm;
+  opacity: 0.6;
+  z-index: -1;
+  animation: blink 0.7s linear 2;
+  /* border-style: solid;
+  border-color: purple; */
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
