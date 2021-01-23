@@ -53,7 +53,13 @@ const ToggleButton = styled.button`
 `;
 const NoiseName = styled.p`
   margin: 5px;
+  font-weight: bolder;
+  text-shadow: 0px -1.5px 2px #000000, 0.5px 0.7px 2px #c3c3c3;
 `;
+export const IconEngrave = {
+  filter:
+    "drop-shadow(0px -1.5px 1px #000000) drop-shadow(0.5px 0.7px 1px #c3c3c3)",
+};
 function NoiseItem({ url, info }: NoiseItemProps) {
   const [isPlaying, setIsPlaying] = useState<boolean>();
   const [isShowing, setIsShowing] = useState<boolean>();
@@ -62,12 +68,9 @@ function NoiseItem({ url, info }: NoiseItemProps) {
     audio.current = new Audio(
       `https://api.soundcloud.com/tracks/${url}/stream?client_id=3c1222aaa64b9dc73bc257260a5497cb`
     );
-    function restartNoise() {
-      startNoise();
-    }
-    audio.current.addEventListener("ended", restartNoise);
+    audio.current.addEventListener("ended", startNoise);
     return () => {
-      audio.current.removeEventListener("ended", restartNoise);
+      audio.current.removeEventListener("ended", startNoise);
     };
   }, [url]);
   function startNoise() {
@@ -97,14 +100,14 @@ function NoiseItem({ url, info }: NoiseItemProps) {
         onMouseLeave={hideNoiseVolumeController}
       >
         <ToggleButton onClick={toggleNoise}>
-          <Icon size="50" />
+          <Icon size="50" style={IconEngrave} />
           <NoiseName>{name}</NoiseName>
           {isPlaying ? (
             <>
-              <BsStopFill size="20" />
+              <BsStopFill size="20" style={IconEngrave} />
             </>
           ) : (
-            <BsFillPlayFill size="20" />
+            <BsFillPlayFill size="20" style={IconEngrave} />
           )}
         </ToggleButton>
         {isPlaying && isShowing && (

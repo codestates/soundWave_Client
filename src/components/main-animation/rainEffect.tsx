@@ -16,7 +16,7 @@ function rainEffect () {
     backIncrement += backrandom;
 
     const dropStyle: object = {
-      left: `${increment}%`,
+      left: `${increment%100 -1}%`,
       bottom: `${randoFiver + randoFiver - 1 + 100}%`,
       animationDelay: `0.${randoHundo}s`,
       animationDuration: `0.5${randoHundo}s`
@@ -35,7 +35,7 @@ function rainEffect () {
     )
 
     let backDropsRain: JSX.Element = (
-      <div className="drop" style={{...dropStyle, left: `${backIncrement}%`}} key={increment + 3}>
+      <div className="drop" style={{...dropStyle, left: `${backIncrement%100-1}%`}} key={increment + 3}>
         <div className="stem" style={stemAndSplat} key={increment + 4}></div>
         <div className="stem" style={stemAndSplat} key={increment + 5}></div>
       </div>

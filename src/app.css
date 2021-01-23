@@ -1,14 +1,8 @@
 html,
-body {
+body,
+#root {
   height: 100%;
-}
-
-body {
   margin: 0;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #202020, #111119);
-}
-
-#mainTest {
-  color: white;
+  min-width: 1140px;
+  min-height: 900px;
 }
