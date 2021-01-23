@@ -22,8 +22,8 @@ function Main() {
     <Container>
       {raintest()}
       {mainRoad()}
-      {streetLamp()}
-      {bounceCar()};
+      {/* {streetLamp()}
+      {bounceCar()}; */}
       <Footer />
       {isSearchOpen && (
         <Modal>
