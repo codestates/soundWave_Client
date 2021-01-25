@@ -8,7 +8,16 @@
   height: 8cm;
   /* border-style: solid;
   border-color: white; */
+
+  /*클릭시 도로이동과 같이 가로등 이동*/
+  /* animation: lamptransform 2s linear infinite; */
 }
+
+/* @keyframes lamptransform {
+  100% {
+    transform: translate(300px, 175px);
+  }
+} */
 
 #streetLamp {
   position: absolute;

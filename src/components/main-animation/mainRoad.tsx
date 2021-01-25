@@ -8,7 +8,7 @@ function mainRoad() {
     <div className="mainRoad">
       {streetLamp()}
       {bounceCar()}
-      <img id="road" src={longRoadimage} alt="" />;
+      <img id="road" src={longRoadimage} alt="" />
     </div>
   );
 }
