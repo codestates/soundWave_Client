@@ -1,4 +1,4 @@
-import { ChangeEvent, useMemo, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 import { AiOutlineFileSearch } from "react-icons/ai";
 import axios from "axios";
@@ -11,7 +11,10 @@ export type Music = {
   title: string;
   artwork_url: string;
 };
-type SearchProps = { isStart: boolean };
+type SearchProps = {
+  isStart: boolean;
+  isInit: boolean;
+};
 type ResultsListProps = {
   search: string;
   isOpen: boolean;
@@ -23,11 +26,20 @@ const SearchContainer = styled.div<SearchProps>`
   flex-direction: column;
   align-items: center;
   height: 0;
-  transition: height 1s cubic-bezier(1, 0, 0.68, 1.34);
+  opacity: 0;
+  transform: translatey(-100px);
+  transition: height 1s cubic-bezier(1, 0, 0.68, 1.34), opacity 0.5s,
+    transform 0.5s;
   ${({ isStart }) =>
     isStart &&
     css`
       height: 93%;
+    `};
+  ${({ isInit }) =>
+    isInit &&
+    css`
+      opacity: 1;
+      transform: translatey(0);
     `};
 `;
 const SearchInfo = styled.p`
@@ -89,13 +101,16 @@ const ResultsList = styled.div<ResultsListProps>`
 `;
 
 function SearchForm() {
+  const [isInit, setIsInit] = useState(false);
   const [search, setSearch] = useState("");
   const [isStart, setIsStart] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [musicList, setMusicList] = useState<Music[]>([]);
   const timerId = useRef<NodeJS.Timeout>(null!);
   const audio = useRef(null!);
-
+  useEffect(() => {
+    setIsInit(true);
+  }, []);
   function changeInput(e: ChangeEvent<HTMLInputElement>) {
     setSearch(e.target.value);
     setIsOpen(false);
@@ -107,7 +122,7 @@ function SearchForm() {
       setMusicList(data);
       setIsOpen(true);
       setIsStart(true);
-    }, 800);
+    }, 500);
   }
   const musics = useMemo(
     function () {
@@ -118,7 +133,7 @@ function SearchForm() {
     [musicList]
   );
   return (
-    <SearchContainer isStart={isStart}>
+    <SearchContainer isStart={isStart} isInit={isInit}>
       <SearchInfo> ESC로 닫을 수 있습니다.</SearchInfo>
       <SearchBar>
         <SearchIconContainer>

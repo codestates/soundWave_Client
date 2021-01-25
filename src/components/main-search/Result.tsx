@@ -2,6 +2,8 @@ import { Container } from "./NoResult";
 import { Music } from "./SearchForm";
 import { IoIosImages } from "react-icons/io";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { closeSearch, pickMusic } from "../../reducer/musicSearchReducer";
 
 type ResultProps = {
   music: Music;
@@ -54,9 +56,14 @@ const ClickText = styled.div`
   }
 `;
 function Result({ music, audio }: ResultProps) {
-  function listenSampleToggle() {
+  const dispatch = useDispatch();
+  function listenSample() {
     audio.src = `${music.stream_url}?client_id=3c1222aaa64b9dc73bc257260a5497cb`;
     audio.play();
+  }
+  function pick() {
+    dispatch(pickMusic(music.stream_url));
+    dispatch(closeSearch());
   }
   return (
     <Container>
@@ -72,8 +79,8 @@ function Result({ music, audio }: ResultProps) {
         <Title>
           <TitleP>{music.title}</TitleP>
         </Title>
-        <ClickText onClick={listenSampleToggle}>SAMPLE</ClickText>
-        <ClickText>PICK</ClickText>
+        <ClickText onClick={listenSample}>SAMPLE</ClickText>
+        <ClickText onClick={pick}>PICK</ClickText>
       </Row>
     </Container>
   );
