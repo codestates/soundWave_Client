@@ -5,13 +5,20 @@ import { GiCampfire, GiWaveCrest } from "react-icons/gi";
 import { IoIosCloudyNight } from "react-icons/io";
 import styled from "styled-components";
 import { getNoises, Noise } from "../../api";
+import MusicPlayer from "./MusicPlayer";
 import NoiseItem from "./NoiseItem";
 import PlusMusicButton from "./PlusMusicButton";
-const ListContainer = styled.div`
-  display: flex;
+const Container = styled.div`
   position: absolute;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+const ListContainer = styled.div`
+  display: flex;
   justify-content: center;
 `;
 const icons: Record<string, [string, IconType]> = {
@@ -35,12 +42,13 @@ function Footer() {
     <NoiseItem key={noise.id} url={noise.url} info={icons[noise.name]} />
   ));
   return (
-    <>
+    <Container>
+      <MusicPlayer />
       <ListContainer>
         {noiselist}
         <PlusMusicButton />
       </ListContainer>
-    </>
+    </Container>
   );
 }
 export default Footer;
