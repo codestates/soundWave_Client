@@ -4,5 +4,6 @@ body,
   height: 100%;
   margin: 0;
   min-width: 1140px;
-  min-height: 900px;
+  min-height: 800px;
+  /* overflow: hidden; */
 }
