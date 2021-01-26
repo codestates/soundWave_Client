@@ -306,12 +306,13 @@ function MusicPlayer() {
 
   useEffect(() => {
     if (musicUrl) {
-      setIsPlaying(true);
+      setIsPlaying(false);
       const { current } = audio;
       const setData = () => {
         setCurrentTime(current.currentTime);
         setDuration(current.duration);
         setVolume(current.volume);
+        setIsPlaying(true);
         current.volume = 0.5;
       };
       const changeTime = () => {

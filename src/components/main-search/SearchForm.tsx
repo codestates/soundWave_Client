@@ -156,14 +156,17 @@ function SearchForm() {
   const musics = useMemo(
     function () {
       return musicList.length !== 0 ? (
-        musicList.map((music) => (
-          <Result
-            key={music.id}
-            music={music}
-            isSelected={music.stream_url === sampleUrl}
-            isPicked={music.stream_url === musicUrl}
-          />
-        ))
+        musicList.map(
+          (music) =>
+            music.stream_url && (
+              <Result
+                key={music.id}
+                music={music}
+                isSelected={music.stream_url === sampleUrl}
+                isPicked={music.stream_url === musicUrl}
+              />
+            )
+        )
       ) : (
         <NoResult />
       );
