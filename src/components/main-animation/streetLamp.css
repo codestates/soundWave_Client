@@ -8,6 +8,32 @@
   height: 8cm;
   /* border-style: solid;
   border-color: white; */
+
+  /*클릭시 도로이동과 같이 가로등 이동*/
+  animation: lamptransform 5s linear infinite;
+}
+
+@keyframes lamptransform {
+  0%,
+  100% {
+    transform: translate(0px, 0px);
+  }
+
+  20% {
+    transform: translate(220px, 129px);
+  }
+
+  40% {
+    transform: translate(220px, -250px);
+  }
+
+  60% {
+    transform: translate(-250px, -250px);
+  }
+
+  80% {
+    transform: translate(-250px, -144px);
+  }
 }
 
 #streetLamp {
@@ -30,7 +56,6 @@
   height: 4.9cm;
   width: 2.7cm;
   opacity: 0.6;
-  z-index: -1;
   animation: blink 0.7s linear 2;
   /* border-style: solid;
   border-color: purple; */
