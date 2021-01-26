@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-.rain.back-row {
+/* .rain.back-row {
   display: none;
   bottom: 60px;
   opacity: 0.5;
@@ -13,7 +13,7 @@
 
 .back-row-toggle .rain.back-row {
   display: block;
-}
+} */
 
 .drop {
   position: absolute;
@@ -29,10 +29,10 @@
     transform: translateY(0vh);
   }
   75% {
-    transform: translateY(90vh);
+    transform: translateY(60vh);
   }
   100% {
-    transform: translateY(90vh);
+    transform: translateY(60vh);
   }
 }
 
@@ -63,7 +63,7 @@
   }
 }
 
-.splat {
+/* .splat {
   width: 15px;
   height: 10px;
   border-top: 2px dotted rgba(255, 255, 255, 0.5);
@@ -95,4 +95,4 @@
     opacity: 0;
     transform: scale(1.5);
   }
-}
+} */

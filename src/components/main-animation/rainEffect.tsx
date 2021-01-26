@@ -29,23 +29,23 @@ function rainEffect() {
     let dropRain: JSX.Element = (
       <div className="drop" style={dropStyle} key={increment}>
         <div className="stem" style={stemAndSplat} key={increment + 1}></div>
-        <div className="splat" style={stemAndSplat} key={increment + 2}></div>
+        {/* <div className="splat" style={stemAndSplat} key={increment + 2}></div> */}
       </div>
     );
 
-    let backDropsRain: JSX.Element = (
-      <div
-        className="drop"
-        style={{ ...dropStyle, left: `${(backIncrement % 100) - 1}%` }}
-        key={increment + 3}
-      >
-        <div className="stem" style={stemAndSplat} key={increment + 4}></div>
-        <div className="stem" style={stemAndSplat} key={increment + 5}></div>
-      </div>
-    );
+    // let backDropsRain: JSX.Element = (
+    //   <div
+    //     className="drop"
+    //     style={{ ...dropStyle, left: `${(backIncrement % 100) - 1}%` }}
+    //     key={increment + 3}
+    //   >
+    //     <div className="stem" style={stemAndSplat} key={increment + 4}></div>
+    //     <div className="stem" style={stemAndSplat} key={increment + 5}></div>
+    //   </div>
+    // );
 
     drops.push(dropRain);
-    backDrops.push(backDropsRain);
+    // backDrops.push(backDropsRain);
   }
 
   return (
