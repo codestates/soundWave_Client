@@ -1,15 +1,11 @@
 .mainRoad {
-  position: fixed;
-  left: 39.5%;
-  right: 39.5;
-  top: 15%;
-  bottom: 15%;
+  position: relative;
+  top: 95px;
   margin: 0;
   padding: 0;
   width: 8cm;
   height: 10cm;
   overflow: hidden;
-  /* z-index: -1; */
   border-style: solid;
   border-color: white;
 }
@@ -22,12 +18,11 @@
   height: 80cm;
   margin: 0;
   padding: 0;
-  z-index: -3;
   /* border-style: solid;
   border-color: orange; */
 
   /*클릭시 도로이동*/
-  animation: transform 0.5s linear infinite;
+  animation: transform 0.3s linear infinite;
 }
 
 @keyframes transform {
