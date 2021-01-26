@@ -3,8 +3,10 @@ import { IconType } from "react-icons";
 import { FaCarSide, FaCloudRain } from "react-icons/fa";
 import { GiCampfire, GiWaveCrest } from "react-icons/gi";
 import { IoIosCloudyNight } from "react-icons/io";
-import styled from "styled-components";
+import { useSelector } from "react-redux";
+import styled, { css } from "styled-components";
 import { getNoises, Noise } from "../../api";
+import { RootState } from "../../reducer";
 import MusicPlayer from "./MusicPlayer";
 import NoiseItem from "./NoiseItem";
 import PlusMusicButton from "./PlusMusicButton";
@@ -17,9 +19,20 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-const ListContainer = styled.div`
+type ListContainerProps = {
+  musicUrl: string;
+};
+const ListContainer = styled.div<ListContainerProps>`
+  position: relative;
+  bottom: 40px;
   display: flex;
   justify-content: center;
+  ${({ musicUrl }) =>
+    musicUrl !== "" &&
+    css`
+      bottom: 0;
+    `}
+  transition:all .5s;
 `;
 const icons: Record<string, [string, IconType]> = {
   rain: ["Rainy Day", FaCloudRain],
@@ -29,6 +42,9 @@ const icons: Record<string, [string, IconType]> = {
   campfire: ["Bonfire", GiCampfire],
 };
 function Footer() {
+  const musicUrl = useSelector(
+    (state: RootState) => state.musicSearch.musicUrl
+  );
   const [noises, setNoises] = useState<Noise[]>([]);
   useEffect(() => {
     async function test() {
@@ -44,7 +60,7 @@ function Footer() {
   return (
     <Container>
       <MusicPlayer />
-      <ListContainer>
+      <ListContainer musicUrl={musicUrl}>
         {noiselist}
         <PlusMusicButton />
       </ListContainer>

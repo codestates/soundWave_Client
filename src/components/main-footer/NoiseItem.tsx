@@ -9,8 +9,8 @@ type NoiseItemProps = {
 };
 export const Container = styled.div`
   position: relative;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   margin: 20px 20px;
   display: flex;
   justify-content: center;
@@ -53,6 +53,7 @@ const ToggleButton = styled.button`
 `;
 const NoiseName = styled.p`
   margin: 5px;
+  font-size: 12px;
   font-weight: bolder;
   text-shadow: 0px -1.5px 2px #000000, 0.5px 0.7px 2px #c3c3c3;
 `;
@@ -100,7 +101,7 @@ function NoiseItem({ url, info }: NoiseItemProps) {
         onMouseLeave={hideNoiseVolumeController}
       >
         <ToggleButton onClick={toggleNoise}>
-          <Icon size="50" style={IconEngrave} />
+          <Icon size="30" style={IconEngrave} />
           <NoiseName>{name}</NoiseName>
           {isPlaying ? (
             <>

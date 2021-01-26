@@ -1,26 +1,19 @@
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import styled, { css } from "styled-components";
 import { AiOutlineFileSearch } from "react-icons/ai";
-import axios from "axios";
 import NoResult from "./NoResult";
 import Result from "./Result";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../reducer";
+import { listenSample, setSearchInput } from "../../reducer/musicSearchReducer";
+import { getMusicList, Music } from "../../api";
 
-export type Music = {
-  id: number;
-  stream_url: string;
-  title: string;
-  artwork_url: string;
-};
-type SearchProps = {
-  isStart: boolean;
+type SearchContainerProps = {
+  isFound: boolean;
   isInit: boolean;
 };
-type ResultsListProps = {
-  search: string;
-  isOpen: boolean;
-};
 
-const SearchContainer = styled.div<SearchProps>`
+const SearchContainer = styled.div<SearchContainerProps>`
   color: white;
   display: flex;
   flex-direction: column;
@@ -28,12 +21,12 @@ const SearchContainer = styled.div<SearchProps>`
   height: 0;
   opacity: 0;
   transform: translatey(-100px);
-  transition: height 1s cubic-bezier(1, 0, 0.68, 1.34), opacity 0.5s,
+  transition: height 1s cubic-bezier(1, 0.1, 0.8, 1.5), opacity 0.5s,
     transform 0.5s;
-  ${({ isStart }) =>
-    isStart &&
+  ${({ isFound }) =>
+    isFound &&
     css`
-      height: 93%;
+      height: 80%;
     `};
   ${({ isInit }) =>
     isInit &&
@@ -49,7 +42,7 @@ const SearchInfo = styled.p`
 const SearchBar = styled.div`
   display: flex;
   align-items: center;
-  height: 60px;
+  height: 40px;
   margin: 5px 0 20px;
 `;
 const SearchIconContainer = styled.div`
@@ -70,7 +63,7 @@ const SearchInputContainer = styled.div`
   padding: 0 20px 0 10px;
 `;
 const SearchInput = styled.input`
-  font-size: 30px;
+  font-size: 20px;
   border: none;
   &:focus {
     outline: none;
@@ -81,6 +74,9 @@ const ResultsContainer = styled.div`
   width: 400px;
   max-height: 80%;
 `;
+type ResultsListProps = {
+  isOpen: boolean;
+};
 const ResultsList = styled.div<ResultsListProps>`
   border: 1px solid white;
   color: black;
@@ -88,73 +84,112 @@ const ResultsList = styled.div<ResultsListProps>`
   &::-webkit-scrollbar {
     display: none;
   }
-  transition: all 0.3s;
   opacity: 0;
   height: 0;
-  ${({ isOpen, search }) =>
+  ${({ isOpen }) =>
     isOpen &&
-    search.length > 0 &&
     css`
       height: 100%;
       opacity: 1;
     `}
+  transition: all 0.3s;
 `;
 
 function SearchForm() {
+  const dispatch = useDispatch();
+  const searchInput = useSelector(
+    (state: RootState) => state.musicSearch.searchInput
+  );
+  const sampleUrl = useSelector(
+    (state: RootState) => state.musicSearch.sampleUrl
+  );
+  const musicUrl = useSelector(
+    (state: RootState) => state.musicSearch.musicUrl
+  );
   const [isInit, setIsInit] = useState(false);
-  const [search, setSearch] = useState("");
-  const [isStart, setIsStart] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [musicList, setMusicList] = useState<Music[]>([]);
   const timerId = useRef<NodeJS.Timeout>(null!);
-  const audio = useRef(null!);
+  const [musicList, setMusicList] = useState<Music[]>([]);
+  const [isFound, setIsFound] = useState(false);
+
+  const isContinue = useRef(false);
+  const audio = useRef(new Audio());
   useEffect(() => {
+    audio.current.src = `${sampleUrl}?client_id=3c1222aaa64b9dc73bc257260a5497cb`;
+  }, [sampleUrl]);
+  useEffect(() => {
+    const sampleAudio = audio.current;
     setIsInit(true);
-  }, []);
-  function changeInput(e: ChangeEvent<HTMLInputElement>) {
-    setSearch(e.target.value);
-    setIsOpen(false);
-    clearTimeout(timerId.current);
+    const play = () => {
+      sampleAudio.volume = 0.5;
+      sampleAudio.play();
+    };
+    sampleAudio.addEventListener("loadeddata", play);
+    return () => {
+      dispatch(listenSample(""));
+      sampleAudio.src = "";
+      sampleAudio.removeEventListener("loadeddata", play);
+    };
+  }, [dispatch]);
+  useEffect(() => {
+    if (!searchInput) {
+      return;
+    }
     timerId.current = setTimeout(async () => {
-      const { data } = await axios.get<Music[]>(
-        `https://api.soundcloud.com/tracks?q=${e.target.value}&limit=50&client_id=3c1222aaa64b9dc73bc257260a5497cb`
-      );
+      isContinue.current = true;
+      const data = await getMusicList(searchInput);
+      if (!isContinue.current) {
+        return;
+      }
       setMusicList(data);
       setIsOpen(true);
-      setIsStart(true);
+      setIsFound(true);
     }, 500);
+  }, [searchInput]);
+
+  function changeSearchInput(e: ChangeEvent<HTMLInputElement>) {
+    setIsOpen(false);
+    isContinue.current = false;
+    clearTimeout(timerId.current);
+    dispatch(setSearchInput(e.target.value));
   }
   const musics = useMemo(
     function () {
-      return musicList.map((music) => (
-        <Result key={music.id} music={music} audio={audio.current} />
-      ));
+      return musicList.length !== 0 ? (
+        musicList.map((music) => (
+          <Result
+            key={music.id}
+            music={music}
+            isSelected={music.stream_url === sampleUrl}
+            isPicked={music.stream_url === musicUrl}
+          />
+        ))
+      ) : (
+        <NoResult />
+      );
     },
-    [musicList]
+    [musicList, sampleUrl, musicUrl]
   );
   return (
-    <SearchContainer isStart={isStart} isInit={isInit}>
+    <SearchContainer isInit={isInit} isFound={isFound}>
       <SearchInfo> ESC로 닫을 수 있습니다.</SearchInfo>
       <SearchBar>
         <SearchIconContainer>
-          <AiOutlineFileSearch size="30" color="white" />
+          <AiOutlineFileSearch size="20" color="white" />
         </SearchIconContainer>
         <SearchInputContainer>
           <SearchInput
             type="text"
-            value={search}
+            value={searchInput}
             autoFocus
-            onChange={changeInput}
+            onChange={changeSearchInput}
             placeholder="검색어를 입력하세요."
           />
         </SearchInputContainer>
       </SearchBar>
       <ResultsContainer>
-        <ResultsList isOpen={isOpen} search={search}>
-          {musicList.length > 0 ? musics : <NoResult />}
-        </ResultsList>
+        <ResultsList isOpen={isOpen}>{musics}</ResultsList>
       </ResultsContainer>
-      <audio ref={audio}></audio>
     </SearchContainer>
   );
 }

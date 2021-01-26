@@ -2,7 +2,7 @@ import Footer from "../components/main-footer/Footer";
 import raintest from "../components/main-animation/rainEffect";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducer";
-import Modal from "../components/main-search/Modal";
+import SearchModal from "../components/main-search/SearchModal";
 import styled from "styled-components";
 import SearchForm from "../components/main-search/SearchForm";
 import streetLamp from "../components/main-animation/streetLamp";
@@ -25,11 +25,7 @@ function Main() {
       {/* {streetLamp()}
       {bounceCar()}; */}
       <Footer />
-      {isSearchOpen && (
-        <Modal>
-          <SearchForm />
-        </Modal>
-      )}
+      {isSearchOpen && <SearchModal />}
     </Container>
   );
 }
