@@ -11,7 +11,7 @@
   width: 13cm;
   height: 13cm;
   border-radius: 50%;
-  overflow: hidden;
+  /* overflow: hidden; */
   animation: spin 200s linear infinite;
   /* border-style: solid;
   border-color: aqua; */

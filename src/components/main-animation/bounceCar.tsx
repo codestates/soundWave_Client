@@ -2,7 +2,7 @@ import "./bounceCar.css";
 import carFrameImage from "../../images/car_frame.png";
 import carWheelImage from "../../images/car_wheel.png";
 
-function bounceCar() {
+function BounceCar() {
   return (
     <div className="bounceCar">
       <img id="carFrame" src={carFrameImage} alt="" />
@@ -11,4 +11,4 @@ function bounceCar() {
   );
 }
 
-export default bounceCar;
+export default BounceCar;

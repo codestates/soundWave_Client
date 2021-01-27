@@ -1,8 +1,7 @@
-import React from "react";
 import night from "../../images/night.png";
 import "./nightEffect.css";
 
-function nightEffect() {
+function NightEffect() {
   return (
     <div className="nightEffect">
       <img id="night" src={night} alt="" />
@@ -10,4 +9,4 @@ function nightEffect() {
   );
 }
 
-export default nightEffect;
+export default NightEffect;
