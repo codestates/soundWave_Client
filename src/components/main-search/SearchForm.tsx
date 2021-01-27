@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducer";
 import { listenSample, setSearchInput } from "../../reducer/musicSearchReducer";
 import { getMusicList, Music } from "../../api";
+import { SW_CLIENT_ID } from "../../const";
 
 type SearchContainerProps = {
   isFound: boolean;
@@ -115,7 +116,7 @@ function SearchForm() {
   const isContinue = useRef(false);
   const audio = useRef(new Audio());
   useEffect(() => {
-    audio.current.src = `${sampleUrl}?client_id=3c1222aaa64b9dc73bc257260a5497cb`;
+    audio.current.src = `${sampleUrl}?client_id=${SW_CLIENT_ID}`;
   }, [sampleUrl]);
   useEffect(() => {
     const sampleAudio = audio.current;
@@ -156,17 +157,14 @@ function SearchForm() {
   const musics = useMemo(
     function () {
       return musicList.length !== 0 ? (
-        musicList.map(
-          (music) =>
-            music.stream_url && (
-              <Result
-                key={music.id}
-                music={music}
-                isSelected={music.stream_url === sampleUrl}
-                isPicked={music.stream_url === musicUrl}
-              />
-            )
-        )
+        musicList.map((music) => (
+          <Result
+            key={music.id}
+            music={music}
+            isSelected={music.stream_url === sampleUrl}
+            isPicked={music.stream_url === musicUrl}
+          />
+        ))
       ) : (
         <NoResult />
       );

@@ -19,6 +19,11 @@ const CloseButton = styled.div`
   top: 10px;
   left: 10px;
   cursor: pointer;
+  color: red;
+  &:hover {
+    color: white;
+  }
+  transition: all 0.5s;
 `;
 
 function SearchModal() {
@@ -46,7 +51,7 @@ function SearchModal() {
     <>
       <Container>
         <CloseButton onClick={closeModal}>
-          <FaWindowClose size="40" color="red" />
+          <FaWindowClose size="40" />
         </CloseButton>
         <SearchForm />
       </Container>

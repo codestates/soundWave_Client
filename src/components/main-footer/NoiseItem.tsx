@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { IconType } from "react-icons";
 import { BsFillPlayFill, BsStopFill } from "react-icons/bs";
 import NoiseVolumeController from "./NoiseVolumeController";
+import { SW_API_URL, SW_CLIENT_ID } from "../../const";
 type NoiseItemProps = {
   url: string;
   info: [string, IconType];
@@ -67,7 +68,7 @@ function NoiseItem({ url, info }: NoiseItemProps) {
   const audio = useRef<HTMLAudioElement>(null!);
   useEffect(() => {
     audio.current = new Audio(
-      `https://api.soundcloud.com/tracks/${url}/stream?client_id=3c1222aaa64b9dc73bc257260a5497cb`
+      `${SW_API_URL}/tracks/${url}/stream?client_id=${SW_CLIENT_ID}`
     );
     audio.current.addEventListener("ended", startNoise);
     return () => {

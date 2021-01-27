@@ -4,6 +4,7 @@ import { RootState } from "../../reducer";
 import { FaPause, FaPlayCircle } from "react-icons/fa";
 import { IoVolumeHighSharp, IoVolumeMute } from "react-icons/io5";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { SW_CLIENT_ID } from "../../const";
 
 const topRight = keyframes`
     0% {
@@ -303,35 +304,39 @@ function MusicPlayer() {
   const [currentTime, setCurrentTime] = useState(0);
   const [volume, setVolume] = useState(0);
   const [lastVolume, setLastVolume] = useState(0);
-
+  useEffect(() => {
+    const { current } = audio;
+    current.autoplay = true;
+    current.loop = true;
+    const setData = () => {
+      setIsPlaying(true);
+      setCurrentTime(current.currentTime);
+      setDuration(current.duration);
+      current.volume = 0.5;
+      setVolume(current.volume);
+    };
+    const changeTime = () => {
+      setCurrentTime(current.currentTime);
+    };
+    const changeVolume = () => {
+      setVolume(current.volume);
+    };
+    current.addEventListener("loadeddata", setData);
+    current.addEventListener("timeupdate", changeTime);
+    current.addEventListener("volumechange", changeVolume);
+    return () => {
+      current.removeEventListener("loadeddata", setData);
+      current.removeEventListener("timeupdate", changeTime);
+      current.removeEventListener("volumechange", changeVolume);
+    };
+  }, []);
   useEffect(() => {
     if (musicUrl) {
-      setIsPlaying(false);
       const { current } = audio;
-      const setData = () => {
-        setCurrentTime(current.currentTime);
-        setDuration(current.duration);
-        setVolume(current.volume);
-        setIsPlaying(true);
-        current.volume = 0.5;
-      };
-      const changeTime = () => {
-        setCurrentTime(current.currentTime);
-      };
-      const changeVolume = () => {
-        setVolume(current.volume);
-      };
-      current.src = `${musicUrl}?client_id=3c1222aaa64b9dc73bc257260a5497cb`;
-      current.autoplay = true;
-      current.loop = true;
-      current.addEventListener("loadeddata", setData);
-      current.addEventListener("timeupdate", changeTime);
-      current.addEventListener("volumechange", changeVolume);
-      return () => {
-        current.removeEventListener("loadeddata", setData);
-        current.removeEventListener("timeupdate", changeTime);
-        current.removeEventListener("volumechange", changeVolume);
-      };
+      if (current.src) {
+        setIsPlaying(false);
+      }
+      current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
     }
   }, [musicUrl]);
   function pause() {

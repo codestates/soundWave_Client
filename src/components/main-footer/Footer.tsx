@@ -36,8 +36,8 @@ const ListContainer = styled.div<ListContainerProps>`
 `;
 const icons: Record<string, [string, IconType]> = {
   rain: ["Rainy Day", FaCloudRain],
-  car: ["Driving", FaCarSide],
-  sea: ["Beachside", GiWaveCrest],
+  drive: ["Driving", FaCarSide],
+  wave: ["Beachside", GiWaveCrest],
   night: ["Night", IoIosCloudyNight],
   campfire: ["Bonfire", GiCampfire],
 };
@@ -47,15 +47,14 @@ function Footer() {
   );
   const [noises, setNoises] = useState<Noise[]>([]);
   useEffect(() => {
-    async function test() {
+    (async function () {
       const noises = await getNoises();
       setNoises(noises);
-    }
-    test();
+    })();
   }, []);
 
   const noiselist = noises.map((noise) => (
-    <NoiseItem key={noise.id} url={noise.url} info={icons[noise.name]} />
+    <NoiseItem key={noise.name} url={noise.url} info={icons[noise.name]} />
   ));
   return (
     <Container>

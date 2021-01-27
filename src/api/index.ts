@@ -1,7 +1,7 @@
 import axios from "axios";
+import { SW_API_URL, SW_CLIENT_ID } from "../const";
 const API_URL = process.env.REACT_APP_API_URL;
 export type Noise = {
-  id: number;
   name: string;
   url: string;
 };
@@ -11,13 +11,20 @@ export type Music = {
   title: string;
   artwork_url: string;
 };
+
 export async function getNoises() {
-  const { data } = await axios.get<Noise[]>(`${API_URL}/noises`);
-  return data;
+  const {
+    data: {
+      data: { noises },
+    },
+  } = await axios.get<{
+    data: { noises: Noise[] };
+  }>(`${API_URL}/noises`);
+  return noises;
 }
 export async function getMusicList(q: string) {
   const { data } = await axios.get<Music[]>(
-    `https://api.soundcloud.com/tracks?q=${q}&limit=50&client_id=3c1222aaa64b9dc73bc257260a5497cb`
+    `${SW_API_URL}/tracks?q=${q}&limit=50&client_id=${SW_CLIENT_ID}`
   );
   return data;
 }

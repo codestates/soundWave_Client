@@ -1,18 +1,17 @@
-import React from "react";
 import "./rainEffect.css";
 
 function rainEffect() {
   const drops: JSX.Element[] = [];
   const backDrops: JSX.Element[] = [];
   let increment: number = 0;
-  let backIncrement: number = 0;
+  // let backIncrement: number = 0;
 
   while (increment < 100) {
     let randoHundo: number = Math.floor(Math.random() * (98 - 1 + 1) + 1);
     let randoFiver: number = Math.floor(Math.random() * (5 - 2 + 1) + 2);
-    let backrandom: number = Math.floor(Math.random() * (20 - 10 + 1) + 10);
+    // let backrandom: number = Math.floor(Math.random() * (20 - 10 + 1) + 10);
     increment += randoFiver;
-    backIncrement += backrandom;
+    // backIncrement += backrandom;
 
     const dropStyle: object = {
       left: `${(increment % 100) - 1}%`,

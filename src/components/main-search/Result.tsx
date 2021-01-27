@@ -11,6 +11,7 @@ import { Music } from "../../api";
 import { FiPlay, FiSquare } from "react-icons/fi";
 type RowProps = {
   isSelected: boolean;
+  isPicked: boolean;
 };
 const Row = styled.div<RowProps>`
   border: white ridge 1px;
@@ -25,6 +26,11 @@ const Row = styled.div<RowProps>`
   transition: all 0.5s;
   ${({ isSelected }) =>
     isSelected &&
+    css`
+      background-color: pink;
+    `}
+  ${({ isPicked }) =>
+    isPicked &&
     css`
       background-color: red;
     `}
@@ -62,6 +68,9 @@ const ClickText = styled.div`
   &:hover {
     color: red;
   }
+  & p {
+    width: 50px;
+  }
 `;
 type ResultProps = {
   music: Music;
@@ -83,7 +92,7 @@ function Result({ music, isSelected, isPicked }: ResultProps) {
   }
   return (
     <Container>
-      <Row isSelected={isSelected || isPicked}>
+      <Row isSelected={isSelected} isPicked={isPicked}>
         {music.artwork_url ? (
           <Img src={music.artwork_url} alt={music.title} />
         ) : (
@@ -98,7 +107,9 @@ function Result({ music, isSelected, isPicked }: ResultProps) {
         <ClickText onClick={listen}>
           {isSelected ? <FiSquare /> : <FiPlay />}
         </ClickText>
-        <ClickText onClick={pick}>PICK</ClickText>
+        <ClickText onClick={pick}>
+          {isPicked ? <p>PICKED</p> : <p>PICK</p>}
+        </ClickText>
       </Row>
     </Container>
   );

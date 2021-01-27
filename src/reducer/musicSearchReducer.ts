@@ -21,7 +21,6 @@ const musicSearchSlice = createSlice({
     pickMusic(state, { payload }: PayloadAction<string>) {
       state.musicUrl = payload;
     },
-
     closeSearch(state) {
       state.isSearchOpen = false;
     },
