@@ -10,6 +10,7 @@
   border-color: white; */
 
   /*클릭시 도로이동과 같이 가로등 이동*/
+  /*신호등과 도로이동이 끝나는 지점 비율 가로등 1: 도로 16.6*/
   animation: lamptransform 5s linear infinite;
 }
 

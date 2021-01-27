@@ -12,7 +12,6 @@ const Container = styled.div`
   background: linear-gradient(to bottom, #202020, #111119);
   display: flex;
   justify-content: center;
-  /* align-items: center; */
 `;
 
 function Main() {

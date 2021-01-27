@@ -5,16 +5,6 @@
   height: 100%;
 }
 
-/* .rain.back-row {
-  display: none;
-  bottom: 60px;
-  opacity: 0.5;
-}
-
-.back-row-toggle .rain.back-row {
-  display: block;
-} */
-
 .drop {
   position: absolute;
   bottom: 100%;
@@ -62,37 +52,3 @@
     opacity: 0;
   }
 }
-
-/* .splat {
-  width: 15px;
-  height: 10px;
-  border-top: 2px dotted rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
-  opacity: 1;
-  transform: scale(0);
-  animation: splat 0.5s linear infinite;
-  display: none;
-}
-
-.splat-toggle .splat {
-  display: block;
-}
-
-@keyframes splat {
-  0% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  80% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  90% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.5);
-  }
-} */
