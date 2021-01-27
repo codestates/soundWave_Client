@@ -1,0 +1,36 @@
+.nightEffect {
+  position: absolute;
+  top: -60px;
+  left: -95px;
+  /* top: -160px;
+  left: -13px; */
+  margin: 0;
+  padding: 0;
+  /* width: 11cm;
+  height: 11cm; */
+  width: 13cm;
+  height: 13cm;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: spin 200s linear infinite;
+  /* border-style: solid;
+  border-color: aqua; */
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#night {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  margin: 0;
+  padding: 0;
+  width: 15cm;
+  height: 15cm;
+  /* border-style: solid;
+  border-color: purple; */
+}

@@ -1,0 +1,113 @@
+.waveEffect {
+  position: absolute;
+  bottom: -300px;
+  left: -250px;
+  width: 11cm;
+  height: 8cm;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* border-style: solid;
+  border-color: aqua; */
+  animation: waveAppear 8s linear infinite;
+}
+
+@keyframes waveAppear {
+  0% {
+    transform: translate(0px, 0px) rotate(28deg);
+  }
+
+  20%,
+  60% {
+    transform: translate(140px, -140px) rotate(28deg);
+  }
+
+  35%,
+  80% {
+    transform: translate(100px, -100px) rotate(28deg);
+  }
+
+  45% {
+    transform: translate(120px, -120px) rotate(28deg);
+  }
+
+  90% {
+    transform: translate(90px, -90px) rotate(28deg);
+  }
+
+  100% {
+    transform: translate(50px, -50px) rotate(28deg);
+  }
+}
+
+#waveFirst {
+  position: absolute;
+  top: -45px;
+  left: -25px;
+  margin: 0;
+  padding: 0;
+  width: 17cm;
+  height: 10cm;
+  animation: firstWave 15s linear infinite;
+  /* border-style: solid;
+  border-color: orange; */
+}
+
+@keyframes firstWave {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(-190px);
+  }
+}
+
+#waveMiddle {
+  position: absolute;
+  top: -45px;
+  right: -20px;
+  margin: 0;
+  padding: 0;
+  width: 17cm;
+  height: 10cm;
+  animation: middleWave 10s linear infinite;
+  /* border-style: solid;
+  border-color: green; */
+}
+
+@keyframes middleWave {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(200px);
+  }
+}
+
+#waveLast {
+  position: absolute;
+  top: -45px;
+  left: -25px;
+  margin: 0;
+  padding: 0;
+  width: 17cm;
+  height: 10cm;
+  animation: lastWave 5s linear infinite;
+  /* border-style: solid;
+  border-color: red; */
+}
+
+@keyframes lastWave {
+  0%,
+  100% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(-190px);
+  }
+}
