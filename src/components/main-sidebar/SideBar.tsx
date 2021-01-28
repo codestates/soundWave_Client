@@ -17,7 +17,7 @@ const Container = styled.div<ContainerProps>`
   right: 0;
   width: 400px;
   height: 100%;
-  /* background-color: rgba(255, 255, 255, 0.1); */
+  background-color: rgba(0, 0, 0, 0.1);
   transform: translateX(500px);
   ${({ isOpened }) =>
     isOpened &&

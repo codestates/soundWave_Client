@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { RootState } from "../reducer";
 import SearchModal from "../components/main-search/SearchModal";
 import styled from "styled-components";
-import mainRoad from "../components/main-animation/mainRoad";
 import SidebarButton from "../components/main-sidebar/SidebarButton";
 import SideBarModal from "../components/main-sidebar/SideBarModal";
+import MainRoad from "../components/main-animation/mainRoad";
 const Container = styled.div`
   height: 100%;
   position: relative;
@@ -24,7 +24,7 @@ function Main() {
   return (
     <Container>
       <SidebarButton />
-      {mainRoad()}
+      <MainRoad />
       <Footer />
       {isSearchOpen && <SearchModal />}
       {isSideBarOpen && <SideBarModal />}

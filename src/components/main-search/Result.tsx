@@ -105,7 +105,7 @@ function Result({ music, isSelected, isPicked }: ResultProps) {
           <TitleP>{music.title}</TitleP>
         </Title>
         <ClickText onClick={listen}>
-          {isSelected ? <FiSquare /> : <FiPlay />}
+          {!isPicked && (isSelected ? <FiSquare /> : <FiPlay />)}
         </ClickText>
         <ClickText onClick={pick}>
           {isPicked ? <p>PICKED</p> : <p>PICK</p>}

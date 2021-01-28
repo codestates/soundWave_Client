@@ -5,7 +5,7 @@ import { closeSideBar, hideSideBar } from "../../reducer/sideBarReducer";
 import SideBar, { ContainerProps } from "./SideBar";
 
 const Container = styled.div<ContainerProps>`
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
   width: 100%;
   position: absolute;
   top: 0;

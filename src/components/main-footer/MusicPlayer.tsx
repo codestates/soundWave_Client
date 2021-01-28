@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled, { css, keyframes } from "styled-components";
 import { RootState } from "../../reducer";
 import { FaPause, FaPlayCircle } from "react-icons/fa";
 import { IoVolumeHighSharp, IoVolumeMute } from "react-icons/io5";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { SW_CLIENT_ID } from "../../const";
+import { setMusicVolume } from "../../reducer/footerReducer";
 
 const topRight = keyframes`
     0% {
@@ -295,14 +296,15 @@ const DurationController = styled.input<ButtonProps>`
   }
 `;
 function MusicPlayer() {
+  const dispatch = useDispatch();
   const audio = useRef<HTMLAudioElement>(new Audio());
   const musicUrl = useSelector(
     (state: RootState) => state.musicSearch.musicUrl
   );
+  const volume = useSelector((state: RootState) => state.footer.musicVolume);
   const [isPlaying, setIsPlaying] = useState(true);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [volume, setVolume] = useState(0);
   const [lastVolume, setLastVolume] = useState(0);
   useEffect(() => {
     const { current } = audio;
@@ -313,23 +315,22 @@ function MusicPlayer() {
       setCurrentTime(current.currentTime);
       setDuration(current.duration);
       current.volume = 0.5;
-      setVolume(current.volume);
     };
     const changeTime = () => {
       setCurrentTime(current.currentTime);
     };
     const changeVolume = () => {
-      setVolume(current.volume);
+      dispatch(setMusicVolume(current.volume * 100));
     };
+    current.addEventListener("volumechange", changeVolume);
     current.addEventListener("loadeddata", setData);
     current.addEventListener("timeupdate", changeTime);
-    current.addEventListener("volumechange", changeVolume);
     return () => {
+      current.removeEventListener("volumechange", changeVolume);
       current.removeEventListener("loadeddata", setData);
       current.removeEventListener("timeupdate", changeTime);
-      current.removeEventListener("volumechange", changeVolume);
     };
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (musicUrl) {
       const { current } = audio;
@@ -379,7 +380,7 @@ function MusicPlayer() {
                 <VolumeController
                   isPlaying={isPlaying}
                   type="range"
-                  value={volume * 100}
+                  value={volume}
                   onChange={ChangeVolume}
                 />
               </VolumeControllerContainer>

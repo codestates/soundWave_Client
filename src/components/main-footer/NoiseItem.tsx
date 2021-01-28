@@ -4,10 +4,10 @@ import { IconType } from "react-icons";
 import { BsFillPlayFill, BsStopFill } from "react-icons/bs";
 import NoiseVolumeController from "./NoiseVolumeController";
 import { SW_API_URL, SW_CLIENT_ID } from "../../const";
-type NoiseItemProps = {
-  url: string;
-  info: [string, IconType];
-};
+import { useDispatch, useSelector } from "react-redux";
+import { turnOffNoise, turnOnNoise } from "../../reducer/footerReducer";
+import { RootState } from "../../reducer";
+
 export const Container = styled.div`
   position: relative;
   width: 100px;
@@ -62,14 +62,23 @@ export const IconEngrave = {
   filter:
     "drop-shadow(0px -1.5px 1px #000000) drop-shadow(0.5px 0.7px 1px #c3c3c3)",
 };
-function NoiseItem({ url, info }: NoiseItemProps) {
-  const [isPlaying, setIsPlaying] = useState<boolean>();
+type NoiseItemProps = {
+  url: string;
+  info: [string, IconType];
+  name: string;
+};
+function NoiseItem({ url, info, name }: NoiseItemProps) {
+  const dispatch = useDispatch();
+  const isPlaying = useSelector(
+    (state: RootState) => state.footer.noiseList[name].picked
+  );
   const [isShowing, setIsShowing] = useState<boolean>();
   const audio = useRef<HTMLAudioElement>(null!);
   useEffect(() => {
     audio.current = new Audio(
       `${SW_API_URL}/tracks/${url}/stream?client_id=${SW_CLIENT_ID}`
     );
+    audio.current.volume = 0.5;
     audio.current.addEventListener("ended", startNoise);
     return () => {
       audio.current.removeEventListener("ended", startNoise);
@@ -82,10 +91,10 @@ function NoiseItem({ url, info }: NoiseItemProps) {
   function toggleNoise() {
     if (audio.current.paused) {
       startNoise();
-      setIsPlaying(true);
+      dispatch(turnOnNoise(name));
     } else {
       audio.current.pause();
-      setIsPlaying(false);
+      dispatch(turnOffNoise(name));
     }
   }
   function showNoiseVolumeController() {
@@ -94,7 +103,7 @@ function NoiseItem({ url, info }: NoiseItemProps) {
   function hideNoiseVolumeController() {
     setIsShowing(false);
   }
-  const [name, Icon] = info;
+  const [displayName, Icon] = info;
   return (
     <>
       <Container
@@ -103,7 +112,7 @@ function NoiseItem({ url, info }: NoiseItemProps) {
       >
         <ToggleButton onClick={toggleNoise}>
           <Icon size="30" style={IconEngrave} />
-          <NoiseName>{name}</NoiseName>
+          <NoiseName>{displayName}</NoiseName>
           {isPlaying ? (
             <>
               <BsStopFill size="20" style={IconEngrave} />
@@ -113,7 +122,7 @@ function NoiseItem({ url, info }: NoiseItemProps) {
           )}
         </ToggleButton>
         {isPlaying && isShowing && (
-          <NoiseVolumeController audio={audio.current} />
+          <NoiseVolumeController audio={audio.current} name={name} />
         )}
       </Container>
     </>
