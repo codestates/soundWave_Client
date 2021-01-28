@@ -1,7 +1,6 @@
-import React from "react";
 import "./rainEffect.css";
 
-function rainEffect() {
+function Raintest() {
   const drops: JSX.Element[] = [];
   let increment: number = 0;
 
@@ -38,4 +37,4 @@ function rainEffect() {
   );
 }
 
-export default rainEffect;
+export default Raintest;

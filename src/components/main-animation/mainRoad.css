@@ -22,6 +22,8 @@
   border-color: orange; */
 
   /*클릭시 도로이동*/
+}
+.roadMoving {
   animation: transform 0.3s linear infinite;
 }
 

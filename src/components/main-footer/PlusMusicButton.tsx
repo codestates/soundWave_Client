@@ -20,8 +20,8 @@ const Circle = styled.div`
   background-image: linear-gradient(to bottom, #313d45, #3d4850);
   box-shadow: inset 0px 4px 1px 1px #3d4850, inset 0px -3px 1px 1px #232b30;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   color: #9fa8b0;
   transition: all 0.1s linear;
   &:hover {
@@ -42,8 +42,8 @@ function PlusMusicButton() {
       <Container>
         <Border>
           <Circle onClick={openSearchModal}>
-            <TiPlusOutline size="40" style={IconEngrave} />
-            <IoMusicalNotesSharp size="40" style={IconEngrave} />
+            <TiPlusOutline size="20" style={IconEngrave} />
+            <IoMusicalNotesSharp size="30" style={IconEngrave} />
           </Circle>
         </Border>
       </Container>

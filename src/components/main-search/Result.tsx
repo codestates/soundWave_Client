@@ -1,15 +1,19 @@
 import { Container } from "./NoResult";
-import { Music } from "./SearchForm";
 import { IoIosImages } from "react-icons/io";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useDispatch } from "react-redux";
-import { closeSearch, pickMusic } from "../../reducer/musicSearchReducer";
-
-type ResultProps = {
-  music: Music;
-  audio: HTMLAudioElement;
+import {
+  closeSearch,
+  pickMusic,
+  listenSample,
+} from "../../reducer/musicSearchReducer";
+import { Music } from "../../api";
+import { FiPlay, FiSquare } from "react-icons/fi";
+type RowProps = {
+  isSelected: boolean;
+  isPicked: boolean;
 };
-const Row = styled.div`
+const Row = styled.div<RowProps>`
   border: white ridge 1px;
   display: flex;
   align-items: center;
@@ -20,14 +24,24 @@ const Row = styled.div`
     color: black;
   }
   transition: all 0.5s;
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      background-color: pink;
+    `}
+  ${({ isPicked }) =>
+    isPicked &&
+    css`
+      background-color: red;
+    `}
 `;
 const Img = styled.img`
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
 `;
 const ImgIns = styled.div`
-  width: 90px;
-  height: 90px;
+  width: 70px;
+  height: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,12 +68,23 @@ const ClickText = styled.div`
   &:hover {
     color: red;
   }
+  & p {
+    width: 50px;
+  }
 `;
-function Result({ music, audio }: ResultProps) {
+type ResultProps = {
+  music: Music;
+  isSelected: boolean;
+  isPicked: boolean;
+};
+function Result({ music, isSelected, isPicked }: ResultProps) {
   const dispatch = useDispatch();
-  function listenSample() {
-    audio.src = `${music.stream_url}?client_id=3c1222aaa64b9dc73bc257260a5497cb`;
-    audio.play();
+  function listen() {
+    if (isSelected) {
+      dispatch(listenSample(""));
+      return;
+    }
+    dispatch(listenSample(music.stream_url));
   }
   function pick() {
     dispatch(pickMusic(music.stream_url));
@@ -67,7 +92,7 @@ function Result({ music, audio }: ResultProps) {
   }
   return (
     <Container>
-      <Row>
+      <Row isSelected={isSelected} isPicked={isPicked}>
         {music.artwork_url ? (
           <Img src={music.artwork_url} alt={music.title} />
         ) : (
@@ -79,8 +104,12 @@ function Result({ music, audio }: ResultProps) {
         <Title>
           <TitleP>{music.title}</TitleP>
         </Title>
-        <ClickText onClick={listenSample}>SAMPLE</ClickText>
-        <ClickText onClick={pick}>PICK</ClickText>
+        <ClickText onClick={listen}>
+          {!isPicked && (isSelected ? <FiSquare /> : <FiPlay />)}
+        </ClickText>
+        <ClickText onClick={pick}>
+          {isPicked ? <p>PICKED</p> : <p>PICK</p>}
+        </ClickText>
       </Row>
     </Container>
   );

@@ -1,4 +1,3 @@
-import React, { useRef } from "react";
 import waveFirst from "../../images/wave_first.png";
 import waveMiddle from "../../images/wave_middle.png";
 import waveLast from "../../images/wave_last.png";

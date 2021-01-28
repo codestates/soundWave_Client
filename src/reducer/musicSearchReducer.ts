@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
 const initialState = {
   isSearchOpen: false,
+  searchInput: "",
+  sampleUrl: "",
   musicUrl: "",
 };
 const musicSearchSlice = createSlice({
@@ -11,13 +12,25 @@ const musicSearchSlice = createSlice({
     openSearch(state) {
       state.isSearchOpen = true;
     },
-    closeSearch(state) {
-      state.isSearchOpen = false;
+    setSearchInput(state, { payload }: PayloadAction<string>) {
+      state.searchInput = payload;
+    },
+    listenSample(state, { payload }: PayloadAction<string>) {
+      state.sampleUrl = payload;
     },
     pickMusic(state, { payload }: PayloadAction<string>) {
       state.musicUrl = payload;
     },
+    closeSearch(state) {
+      state.isSearchOpen = false;
+    },
   },
 });
-export const { openSearch, closeSearch, pickMusic } = musicSearchSlice.actions;
+export const {
+  openSearch,
+  setSearchInput,
+  listenSample,
+  pickMusic,
+  closeSearch,
+} = musicSearchSlice.actions;
 export default musicSearchSlice.reducer;

@@ -1,11 +1,11 @@
 import Footer from "../components/main-footer/Footer";
 import { useSelector } from "react-redux";
 import { RootState } from "../reducer";
-import Modal from "../components/main-search/Modal";
+import SearchModal from "../components/main-search/SearchModal";
 import styled from "styled-components";
-import SearchForm from "../components/main-search/SearchForm";
-import mainRoad from "../components/main-animation/mainRoad";
-
+import SidebarButton from "../components/main-sidebar/SidebarButton";
+import SideBarModal from "../components/main-sidebar/SideBarModal";
+import MainRoad from "../components/main-animation/mainRoad";
 const Container = styled.div`
   height: 100%;
   position: relative;
@@ -18,15 +18,16 @@ function Main() {
   const isSearchOpen = useSelector(
     (state: RootState) => state.musicSearch.isSearchOpen
   );
+  const isSideBarOpen = useSelector(
+    (state: RootState) => state.sideBar.isSideBarOpen
+  );
   return (
     <Container>
-      {mainRoad()}
+      <SidebarButton />
+      <MainRoad />
       <Footer />
-      {isSearchOpen && (
-        <Modal>
-          <SearchForm />
-        </Modal>
-      )}
+      {isSearchOpen && <SearchModal />}
+      {isSideBarOpen && <SideBarModal />}
     </Container>
   );
 }

@@ -1,19 +1,19 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-
-type NoiseVolumeControllerProps = {
-  audio: HTMLAudioElement;
-};
+import { RootState } from "../../reducer";
+import { setVolume } from "../../reducer/footerReducer";
 const Container = styled.div`
   position: absolute;
-  bottom: 5px;
+  bottom: 0px;
 `;
 const VolumeInput = styled.input`
   appearance: none;
   opacity: 0.1;
-  height: 10px;
+  height: 5px;
+  width: 80px;
   background: black;
-  border-radius: 10px;
+  border-radius: 20px;
   outline: none;
   transition: opacity 0.5s;
   &:hover {
@@ -23,8 +23,8 @@ const VolumeInput = styled.input`
     cursor: pointer;
     appearance: none;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
+    width: 10px;
+    height: 10px;
     background: radial-gradient(
       circle at 50% 50%,
       white 1px,
@@ -34,12 +34,19 @@ const VolumeInput = styled.input`
     );
   }
 `;
-function NoiseVolumeController({ audio }: NoiseVolumeControllerProps) {
-  const [volume, setVolume] = useState(audio.volume * 100);
+type NoiseVolumeControllerProps = {
+  audio: HTMLAudioElement;
+  name: string;
+};
+function NoiseVolumeController({ audio, name }: NoiseVolumeControllerProps) {
+  const dispatch = useDispatch();
+  const volume = useSelector(
+    (state: RootState) => state.footer.noiseList[name].volume
+  );
   function setNoiseVolume(e: ChangeEvent<HTMLInputElement>) {
     const volume = parseInt(e.target.value);
     audio.volume = volume / 100;
-    setVolume(volume);
+    dispatch(setVolume({ name, volume }));
   }
 
   return (

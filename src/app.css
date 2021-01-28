@@ -3,7 +3,6 @@ body,
 #root {
   height: 100%;
   margin: 0;
-  min-width: 1140px;
-  min-height: 800px;
-  /* overflow: hidden; */
+  min-width: 900px;
+  min-height: 750px;
 }

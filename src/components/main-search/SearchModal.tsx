@@ -3,11 +3,7 @@ import { MouseEvent, useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { closeSearch } from "../../reducer/musicSearchReducer";
 import styled from "styled-components";
-
-type ModalProps = {
-  children: React.ReactNode;
-};
-
+import SearchForm from "./SearchForm";
 const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -23,9 +19,14 @@ const CloseButton = styled.div`
   top: 10px;
   left: 10px;
   cursor: pointer;
+  color: red;
+  &:hover {
+    color: white;
+  }
+  transition: all 0.5s;
 `;
 
-function Modal({ children }: ModalProps) {
+function SearchModal() {
   const dispatch = useDispatch();
 
   const closeModal = useCallback(
@@ -50,11 +51,11 @@ function Modal({ children }: ModalProps) {
     <>
       <Container>
         <CloseButton onClick={closeModal}>
-          <FaWindowClose size="40" color="red" />
+          <FaWindowClose size="40" />
         </CloseButton>
-        {children}
+        <SearchForm />
       </Container>
     </>
   );
 }
-export default Modal;
+export default SearchModal;
