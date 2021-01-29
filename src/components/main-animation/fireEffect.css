@@ -1,0 +1,71 @@
+.fireEffect {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  left: 65px;
+  top: 35px;
+  width: 5cm;
+  height: 5cm;
+  /* border-style: solid;
+  border-color: red; */
+}
+
+#flameA {
+  position: absolute;
+  left: 130px;
+  top: 142px;
+  margin: 0;
+  padding: 0;
+  width: 1cm;
+  height: 1cm;
+  animation: swing 0.5s linear infinite alternate;
+  transform-origin: center 40px;
+}
+
+#flameB {
+  position: absolute;
+  left: 105px;
+  top: 130px;
+  margin: 0;
+  padding: 0;
+  width: 1cm;
+  height: 1cm;
+  animation: swing 0.8s linear infinite alternate;
+  transform-origin: center 40px;
+}
+
+#flameC {
+  position: absolute;
+  left: 115px;
+  top: 60px;
+  margin: 0;
+  padding: 0;
+  width: 1cm;
+  height: 1cm;
+  animation: swing 1s linear infinite alternate;
+  transform-origin: center 40px;
+}
+
+#flameD {
+  position: absolute;
+  left: 99px;
+  top: 10px;
+  margin: 0;
+  padding: 0;
+  width: 1cm;
+  height: 1cm;
+  animation: swing 1.5s linear infinite alternate;
+  transform-origin: center 40px;
+  /* border-style: solid;
+  border-color: blue; */
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(-3deg);
+  }
+}

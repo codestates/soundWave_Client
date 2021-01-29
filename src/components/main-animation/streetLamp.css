@@ -12,9 +12,11 @@
   /*클릭시 도로이동과 같이 가로등 이동*/
   /*신호등과 도로이동이 끝나는 지점 비율 가로등 1: 도로 16.6*/
 }
+
 .lampAndLightMoving {
   animation: lamptransform 5s linear infinite;
 }
+
 @keyframes lamptransform {
   0%,
   100% {
@@ -49,7 +51,7 @@
   border-color: green; */
 }
 
-#lampLight {
+.lampLight {
   position: absolute;
   top: 2.1cm;
   left: 2.4cm;
@@ -58,10 +60,17 @@
   height: 4.9cm;
   width: 2.7cm;
   opacity: 0.6;
-  animation: blink 0.3s linear 2;
-  animation-delay: 2s;
   /* border-style: solid;
   border-color: purple; */
+}
+
+.blinkStart {
+  animation: blink 0.3s linear 2;
+  animation-delay: 2s;
+}
+
+.blinkburning {
+  animation: blink 0.3s linear infinite;
 }
 
 @keyframes blink {

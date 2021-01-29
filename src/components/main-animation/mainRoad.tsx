@@ -21,9 +21,9 @@ function MainRoad() {
   const isWavePicked = useSelector(
     (state: RootState) => state.footer.noiseList["wave"].picked
   );
-  // const isCampfiePicked = useSelector(
-  //   (state: RootState) => state.footer.noiseList["campfire"].picked
-  // );
+  const isCampfiePicked = useSelector(
+    (state: RootState) => state.footer.noiseList["campfire"].picked
+  );
   return (
     <div className="mainRoad">
       {isNightPicked && <NightEffect />}
@@ -34,7 +34,10 @@ function MainRoad() {
         alt=""
       />
       {isDrivePicked && <BounceCar />}
-      <StreetLamp isDrivePicked={isDrivePicked} />
+      <StreetLamp
+        isDrivePicked={isDrivePicked}
+        isCampfiePicked={isCampfiePicked}
+      />
       {isWavePicked && <WaveEffect />}
       {isRainPicked && <Raintest />}
     </div>
