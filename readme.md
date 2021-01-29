@@ -11,6 +11,16 @@
 <img alt="node-v12.19.0" src="https://img.shields.io/badge/node-v12.20.0-3f72af" />
 <img alt="npm-v6.14.8" src="https://img.shields.io/badge/npm-v6.14.8-aa96da" />
 
+# 대충 소개
+-----
+
+
+# Tech Stacks
+-----
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/68503014/106323719-33a83480-62bb-11eb-8692-76288a78f581.jpg" alt="text" width="800" />
+</p>
 
 ### 현재상태
 ![Jan-21-2021 12-53-11](https://user-images.githubusercontent.com/22779951/105278032-05a26080-5be8-11eb-8e3f-5db115153dbd.gif)
