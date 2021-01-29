@@ -19,7 +19,7 @@
 -----
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106323719-33a83480-62bb-11eb-8692-76288a78f581.jpg" alt="text" width="800" />
+  <img src="https://user-images.githubusercontent.com/68503014/106323719-33a83480-62bb-11eb-8692-76288a78f581.jpg" alt="text" width="700" />
 </p>
 
 ### 현재상태
