@@ -11,11 +11,11 @@
 <img alt="node-v12.19.0" src="https://img.shields.io/badge/node-v12.20.0-3f72af" />
 <img alt="npm-v6.14.8" src="https://img.shields.io/badge/npm-v6.14.8-aa96da" />
 
-# 대충 소개
+## 대충 소개
 -----
 
 
-# Tech Stacks
+## Tech Stacks
 -----
 
 <p align="center">
