@@ -1,8 +1,14 @@
+<p align="center">
+<img alt="logo" src="https://user-images.githubusercontent.com/68503014/106308629-511dd400-62a4-11eb-9eaf-1ed1d62fa00b.png" width="500px"/>
+</p>
+<h2 align="center">백색 소음 조합 스트리밍 사이트<br><a href="">soundWave</a>입니다!</h2>
 
-<img alt="logo" src="https://user-images.githubusercontent.com/68503014/106308629-511dd400-62a4-11eb-9eaf-1ed1d62fa00b.png />
 
-<img alt="Launched?" src="https://img.shields.io/badge/Maintained%3F-yes!-green.svg" />
-<img alt="node-v12.19.0" src="https://img.shields.io/badge/node-v14.15.1 LTS-3f72af" />
+<p align="center">
+<img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+
+<img alt="Launched?" src="https://img.shields.io/badge/Maintained%3F-not yet!-green.svg" />
+<img alt="node-v12.19.0" src="https://img.shields.io/badge/node-v12.20.0-3f72af" />
 <img alt="npm-v6.14.8" src="https://img.shields.io/badge/npm-v6.14.8-aa96da" />
 
 
