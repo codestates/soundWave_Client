@@ -1,17 +1,17 @@
 .nightEffect {
   position: absolute;
-  top: -60px;
-  left: -95px;
-  /* top: -160px;
-  left: -13px; */
+  /* top: -60px;
+  left: -95px; */
+  top: -290px;
+  left: -15px;
   margin: 0;
   padding: 0;
-  /* width: 11cm;
-  height: 11cm; */
-  width: 13cm;
-  height: 13cm;
+  width: 11cm;
+  height: 11cm;
+  /* width: 10cm;
+  height: 10cm; */
   border-radius: 50%;
-  /* overflow: hidden; */
+  overflow: hidden;
   animation: spin 200s linear infinite;
   /* border-style: solid;
   border-color: aqua; */
@@ -26,11 +26,12 @@
 #night {
   position: absolute;
   top: -5px;
-  left: -5px;
+  left: 0px;
   margin: 0;
   padding: 0;
-  width: 15cm;
-  height: 15cm;
+  width: 11cm;
+  height: 11cm;
+  border-radius: 50%;
   /* border-style: solid;
   border-color: purple; */
 }

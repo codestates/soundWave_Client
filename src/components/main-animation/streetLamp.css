@@ -58,7 +58,8 @@
   height: 4.9cm;
   width: 2.7cm;
   opacity: 0.6;
-  animation: blink 0.7s linear 2;
+  animation: blink 0.3s linear 2;
+  animation-delay: 2s;
   /* border-style: solid;
   border-color: purple; */
 }
