@@ -327,13 +327,13 @@ function MusicPlayer() {
     };
   }, [dispatch]);
   useEffect(() => {
+    const { current } = audio;
     if (musicUrl) {
-      const { current } = audio;
       if (current.src) {
         setIsPlaying(false);
       }
-      current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
     }
+    current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
   }, [musicUrl]);
   useEffect(() => {
     const { current } = audio;

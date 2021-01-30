@@ -21,23 +21,27 @@ const Container = styled.div<ContainerProps>`
   width: 30%;
   height: 100%;
   color: black;
-  background-color: #93da72;
+  background-color: white;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   &:hover {
-    background-color: #dad872;
+    background-color: black;
+    color: white;
     transition: all 0.5s;
   }
   &:active {
-    background-color: #da8f72;
+    background-color: #003066;
     transition: all 0.1s;
   }
   & p {
     margin: 5px;
     text-align: center;
+    width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   opacity: 0;
   transform: translateX(130px);
@@ -62,6 +66,8 @@ const NoContents = styled.div`
   height: 100%;
 `;
 const DeleteButton = styled.p`
+  position: absolute;
+  bottom: 0;
   font-size: 8px;
   color: red;
   width: 50px;
@@ -97,14 +103,13 @@ function GroupItem({
     }, 100);
   }, []);
   function choose() {
-    console.log("choose");
     dispatch(turnOffAllNoise());
     noises.forEach((noise) => {
       dispatch(turnOnNoise(noise.name));
       dispatch(setVolume({ name: noise.name, volume: noise.volume }));
     });
     dispatch(pickMusic(music.url));
-    dispatch(setMusicVolume(music.volume));
+    dispatch(setMusicVolume(music.volume === -1 ? 50 : music.volume));
   }
   function clickDelete(e: MouseEvent) {
     e.stopPropagation();

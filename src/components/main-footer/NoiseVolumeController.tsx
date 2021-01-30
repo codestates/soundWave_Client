@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 const VolumeInput = styled.input`
   appearance: none;
-  opacity: 0.1;
+  opacity: 0.5;
   height: 5px;
   width: 80px;
   background: black;

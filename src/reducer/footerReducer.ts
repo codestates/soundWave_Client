@@ -29,7 +29,7 @@ const initialState: FooterState = {
   },
   musicVolume: 50,
 };
-type NoiseVolume = {
+export type NoiseVolume = {
   name: string;
   volume: number;
 };

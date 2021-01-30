@@ -27,6 +27,12 @@ const Container = styled.div`
     margin: 5px;
     &:hover {
       color: #35addd;
+      & span {
+        color: white;
+      }
+    }
+    & span {
+      color: red;
     }
   }
 `;
@@ -88,7 +94,7 @@ export type Weather = {
   name: string;
   Icon: IconType;
 };
-const weathers: Weather[] = [
+export const weathers: Weather[] = [
   { name: "hot", Icon: TiWeatherSunny },
   { name: "rain", Icon: TiWeatherDownpour },
   { name: "snow", Icon: TiWeatherSnow },
@@ -129,7 +135,7 @@ function GroupForm() {
     if (!noises.length) {
       return dispatch(setErr("소음을 1개 이상 선택해 주세요."));
     }
-    const music = { url: musicUrl, volume: musicUrl ? musicVolume : 0 };
+    const music = { url: musicUrl, volume: musicUrl ? musicVolume : -1 };
     (async () => {
       try {
         await postGroups(accessToken, {
@@ -171,7 +177,9 @@ function GroupForm() {
             onChange={ChangeInput}
           />
         </Contents>
-        <p onClick={click}>어떤 날씨에 듣기 좋을까요?</p>
+        <p onClick={click}>
+          어떤 날씨에 듣기 좋을까요? (<span>날씨 선택</span>)
+        </p>
         <WeatherContainer>
           <Weathers isShow={isShow}>
             {weathers.map((weather) => (
