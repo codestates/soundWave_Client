@@ -1,7 +1,7 @@
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { logout } from "../../api";
+import { RootState } from "../../reducer";
 import { setAccessToken, setUser, User } from "../../reducer/sideBarReducer";
 
 const Container = styled.div`
@@ -30,20 +30,22 @@ const LogOutButton = styled.div`
   }
 `;
 function Footer() {
-  const histoty = useHistory();
   const dispatch = useDispatch();
+  const accessToken = useSelector(
+    (state: RootState) => state.sideBar.accessToken
+  );
   function click() {
     (async () => {
       await logout();
       dispatch(setAccessToken(""));
       dispatch(setUser({} as User));
-      histoty.push("/");
+      window.location.href = "/";
     })();
   }
   return (
     <Container>
       <div>LOGO</div>
-      <LogOutButton onClick={click}>logout</LogOutButton>
+      {accessToken && <LogOutButton onClick={click}>logout</LogOutButton>}
     </Container>
   );
 }
