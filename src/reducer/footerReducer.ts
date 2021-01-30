@@ -6,11 +6,26 @@ type FooterState = {
 };
 const initialState: FooterState = {
   noiseList: {
-    rain: { picked: false, volume: 50 },
-    drive: { picked: false, volume: 50 },
-    wave: { picked: false, volume: 50 },
-    night: { picked: false, volume: 50 },
-    campfire: { picked: false, volume: 50 },
+    rain: {
+      picked: false,
+      volume: 50,
+    },
+    drive: {
+      picked: false,
+      volume: 50,
+    },
+    wave: {
+      picked: false,
+      volume: 50,
+    },
+    night: {
+      picked: false,
+      volume: 50,
+    },
+    campfire: {
+      picked: false,
+      volume: 50,
+    },
   },
   musicVolume: 50,
 };
@@ -28,6 +43,12 @@ const footerSlice = createSlice({
     turnOffNoise(state, { payload }: PayloadAction<string>) {
       state.noiseList[payload].picked = false;
     },
+    turnOffAllNoise(state) {
+      for (const key in state.noiseList) {
+        state.noiseList[key].picked = false;
+        state.noiseList[key].volume = 50;
+      }
+    },
     setVolume(state, { payload }: PayloadAction<NoiseVolume>) {
       const { name, volume } = payload;
       state.noiseList[name].volume = volume;
@@ -42,5 +63,6 @@ export const {
   turnOffNoise,
   setVolume,
   setMusicVolume,
+  turnOffAllNoise,
 } = footerSlice.actions;
 export default footerSlice.reducer;

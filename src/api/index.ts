@@ -1,17 +1,11 @@
 import axios from "axios";
 import { SW_API_URL, SW_CLIENT_ID } from "../const";
+import { Group, User } from "../reducer/sideBarReducer";
 const API_URL = process.env.REACT_APP_API_URL;
 export type Noise = {
   name: string;
   url: string;
 };
-export type Music = {
-  id: number;
-  stream_url: string;
-  title: string;
-  artwork_url: string;
-};
-
 export async function getNoises() {
   const {
     data: {
@@ -22,9 +16,77 @@ export async function getNoises() {
   }>(`${API_URL}/noises`);
   return noises;
 }
+export type Music = {
+  id: number;
+  stream_url: string;
+  title: string;
+  artwork_url: string;
+};
 export async function getMusicList(q: string) {
   const { data } = await axios.get<Music[]>(
     `${SW_API_URL}/tracks?q=${q}&limit=50&client_id=${SW_CLIENT_ID}`
   );
   return data;
+}
+export type Auth = {
+  accessToken: string;
+  user: User;
+};
+export async function checkAuth() {
+  const { data } = await axios.get<Auth>(`${API_URL}/auth/login/check`, {
+    withCredentials: true,
+  });
+  return data;
+}
+export async function logout() {
+  await axios.get<Auth>(`${API_URL}/auth/logout`, {
+    withCredentials: true,
+  });
+}
+type GroupPost = {
+  userId: number;
+  groupName: string;
+  weather: string;
+  noises: { name: string; volume: number }[];
+  music: { url: string; volume: number };
+};
+export async function postGroups(accessToken: string, req: GroupPost) {
+  const { data } = await axios.post<{ message: string }>(
+    `${API_URL}/groups`,
+    req,
+    {
+      headers: {
+        authorization: accessToken,
+      },
+    }
+  );
+  return data;
+}
+
+export async function getGroups(accessToken: string, userId: number) {
+  try {
+    const { data } = await axios.get<{ message: string; data: Group[] }>(
+      `${API_URL}/groups?userId=${userId}`,
+      {
+        headers: {
+          authorization: accessToken,
+        },
+      }
+    );
+    return data;
+  } catch (err) {
+    return { data: [] };
+  }
+}
+export async function deleteGroup(accessToken: string, groupId: number) {
+  const { data } = await axios.delete(`${API_URL}/groups/delete/${groupId}`, {
+    headers: {
+      authorization: accessToken,
+    },
+  });
+  console.log(data);
+}
+export async function getRecommends() {
+  const { data } = await axios.get(`${API_URL}/recommend`);
+  console.log(data);
 }

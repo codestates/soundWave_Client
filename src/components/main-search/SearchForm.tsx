@@ -122,7 +122,7 @@ function SearchForm() {
     const sampleAudio = audio.current;
     setIsInit(true);
     const play = () => {
-      sampleAudio.volume = 0.5;
+      sampleAudio.currentTime = sampleAudio.duration / 5;
       sampleAudio.play();
     };
     sampleAudio.addEventListener("loadeddata", play);

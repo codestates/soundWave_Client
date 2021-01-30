@@ -44,9 +44,7 @@ function NoiseVolumeController({ audio, name }: NoiseVolumeControllerProps) {
     (state: RootState) => state.footer.noiseList[name].volume
   );
   function setNoiseVolume(e: ChangeEvent<HTMLInputElement>) {
-    const volume = parseInt(e.target.value);
-    audio.volume = volume / 100;
-    dispatch(setVolume({ name, volume }));
+    dispatch(setVolume({ name, volume: parseInt(e.target.value) }));
   }
 
   return (

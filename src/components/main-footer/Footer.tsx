@@ -28,13 +28,13 @@ const ListContainer = styled.div<ListContainerProps>`
   display: flex;
   justify-content: center;
   ${({ musicUrl }) =>
-    musicUrl !== "" &&
+    musicUrl &&
     css`
       bottom: 0;
     `}
   transition:all .5s;
 `;
-const icons: Record<string, [string, IconType]> = {
+export const icons: Record<string, [string, IconType]> = {
   rain: ["Rainy Day", FaCloudRain],
   drive: ["Driving", FaCarSide],
   wave: ["Beachside", GiWaveCrest],
