@@ -6,8 +6,29 @@
   top: 35px;
   width: 5cm;
   height: 5cm;
+  animation: fadeIn 1s;
   /* border-style: solid;
   border-color: red; */
+}
+
+.fireEffectEnd {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
+  }
 }
 
 #flameA {

@@ -7,6 +7,7 @@ import "./mainRoad.css";
 import NightEffect from "./nightEffect";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducer";
+import { useEffect, useState } from "react";
 
 function MainRoad() {
   const isRainPicked = useSelector(
@@ -21,9 +22,18 @@ function MainRoad() {
   const isWavePicked = useSelector(
     (state: RootState) => state.footer.noiseList["wave"].picked
   );
-  const isCampfiePicked = useSelector(
+  const isCampfirePicked = useSelector(
     (state: RootState) => state.footer.noiseList["campfire"].picked
   );
+
+  const [waveToggle, setwaveToggle] = useState(false);
+
+  useEffect(() => {
+    if (isWavePicked) {
+      setwaveToggle(true);
+    }
+  }, [isWavePicked]);
+
   return (
     <div className="mainRoad">
       {isNightPicked && <NightEffect />}
@@ -31,14 +41,16 @@ function MainRoad() {
         id="road"
         className={isDrivePicked ? "roadMoving" : ""}
         src={longRoadimage}
-        alt=""
+        alt="road"
       />
       {isDrivePicked && <BounceCar />}
       <StreetLamp
         isDrivePicked={isDrivePicked}
-        isCampfiePicked={isCampfiePicked}
+        isCampfiePicked={isCampfirePicked}
       />
-      {isWavePicked && <WaveEffect />}
+      {waveToggle && (
+        <WaveEffect isWavePicked={isWavePicked} setwaveToggle={setwaveToggle} />
+      )}
       {isRainPicked && <Raintest />}
     </div>
   );

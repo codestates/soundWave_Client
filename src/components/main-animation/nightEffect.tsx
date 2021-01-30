@@ -4,7 +4,7 @@ import "./nightEffect.css";
 function NightEffect() {
   return (
     <div className="nightEffect">
-      <img id="night" src={night} alt="" />
+      <img id="night" src={night} alt="night" />
     </div>
   );
 }

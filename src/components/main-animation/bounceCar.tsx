@@ -5,8 +5,8 @@ import carWheelImage from "../../images/car_wheel.png";
 function BounceCar() {
   return (
     <div className="bounceCar">
-      <img id="carFrame" src={carFrameImage} alt="" />
-      <img id="carWheel" src={carWheelImage} alt="" />
+      <img id="carFrame" src={carFrameImage} alt="carFrame" />
+      <img id="carWheel" src={carWheelImage} alt="carWheel" />
     </div>
   );
 }

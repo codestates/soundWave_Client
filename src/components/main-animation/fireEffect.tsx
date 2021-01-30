@@ -1,13 +1,27 @@
 import flame from "../../images/flame.png";
 import "./fireEffect.css";
 
-function FireEffect() {
+type FireEffectProps = {
+  isCampfiePicked: boolean;
+  setfireToggle: Function;
+};
+
+function FireEffect({ isCampfiePicked, setfireToggle }: FireEffectProps) {
+  const changefireToggle = () => {
+    if (!isCampfiePicked) {
+      setfireToggle(false);
+    }
+  };
+
   return (
-    <div className="fireEffect">
-      <img id="flameA" src={flame} />
-      <img id="flameB" src={flame} />
-      <img id="flameC" src={flame} />
-      <img id="flameD" src={flame} />
+    <div
+      className={`fireEffect ${isCampfiePicked ? "" : "fireEffectEnd"} `}
+      onAnimationEnd={changefireToggle}
+    >
+      <img id="flameA" src={flame} alt="flameA" />
+      <img id="flameB" src={flame} alt="flameB" />
+      <img id="flameC" src={flame} alt="flameC" />
+      <img id="flameD" src={flame} alt="flameD" />
     </div>
   );
 }
