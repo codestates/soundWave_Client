@@ -5,11 +5,29 @@ import { logout } from "../../api";
 import { setAccessToken, setUser, User } from "../../reducer/sideBarReducer";
 
 const Container = styled.div`
-  border: 1px solid white;
+  margin-top: 10px;
+  height: 70px;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+`;
+
+const LogOutButton = styled.div`
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: #afa0a0;
+    color: black;
+    transition: all 0.5s;
+  }
+  &:active {
+    background-color: #814e4e;
+    color: black;
+    transition: all 0.1s;
+  }
 `;
 function Footer() {
   const histoty = useHistory();
@@ -24,7 +42,8 @@ function Footer() {
   }
   return (
     <Container>
-      <div onClick={click}>logout</div>
+      <div>LOGO</div>
+      <LogOutButton onClick={click}>logout</LogOutButton>
     </Container>
   );
 }

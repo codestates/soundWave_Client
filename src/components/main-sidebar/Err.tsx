@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import { RiCloseFill } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import styled, { keyframes } from "styled-components";
@@ -23,6 +24,11 @@ const shaking = keyframes`
   }
 `;
 const Container = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+const Box = styled.div`
   font-size: 12px;
   position: absolute;
   top: 20%;
@@ -60,12 +66,17 @@ function Err({ message }: ErrProps) {
   function close() {
     dispatch(setErr(""));
   }
+  function stop(e: MouseEvent) {
+    e.stopPropagation();
+  }
   return (
-    <Container>
-      <CloseButton onClick={close}>
-        <RiCloseFill color="white" />
-      </CloseButton>
-      <p>{message}</p>
+    <Container onClick={close}>
+      <Box onClick={stop}>
+        <CloseButton onClick={close}>
+          <RiCloseFill color="white" />
+        </CloseButton>
+        <p>{message}</p>
+      </Box>
     </Container>
   );
 }

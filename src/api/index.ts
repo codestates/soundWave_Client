@@ -86,7 +86,26 @@ export async function deleteGroup(accessToken: string, groupId: number) {
   });
   console.log(data);
 }
+export type RecommendRes = {
+  groupcombMusic: { musicUrl: string };
+  groupname: string;
+  id: number;
+  musicVolume: number;
+  noise: { noise: { name: string }; volume: number }[];
+  user: {
+    id: number;
+    email: string;
+    profile: string;
+  };
+  weather: { weather: string };
+};
 export async function getRecommends() {
-  const { data } = await axios.get(`${API_URL}/recommend`);
-  console.log(data);
+  const { data } = await axios.get<RecommendRes[]>(`${API_URL}/recommend`);
+  return data;
+}
+export async function getOtherGroups(userId: number) {
+  const { data } = await axios.get<{ message: string; data: RecommendRes[] }>(
+    `${API_URL}/recommend/others/${userId}`
+  );
+  return data;
 }

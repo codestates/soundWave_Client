@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { IconType } from "react-icons";
 import { BsFillPlayFill, BsStopFill } from "react-icons/bs";
@@ -75,7 +75,7 @@ function NoiseItem({ url, info, name }: NoiseItemProps) {
   const volume = useSelector(
     (state: RootState) => state.footer.noiseList[name].volume
   );
-  const [isShowing, setIsShowing] = useState<boolean>();
+  // const [isShowing, setIsShowing] = useState<boolean>();
   const audio = useRef<HTMLAudioElement>(new Audio());
 
   useEffect(() => {
@@ -103,18 +103,18 @@ function NoiseItem({ url, info, name }: NoiseItemProps) {
       dispatch(turnOnNoise(name));
     }
   }
-  function showNoiseVolumeController() {
-    setIsShowing(true);
-  }
-  function hideNoiseVolumeController() {
-    setIsShowing(false);
-  }
+  // function showNoiseVolumeController() {
+  //   setIsShowing(true);
+  // }
+  // function hideNoiseVolumeController() {
+  //   setIsShowing(false);
+  // }
   const [displayName, Icon] = info;
   return (
     <>
       <Container
-        onMouseEnter={showNoiseVolumeController}
-        onMouseLeave={hideNoiseVolumeController}
+      // onMouseEnter={showNoiseVolumeController}
+      // onMouseLeave={hideNoiseVolumeController}
       >
         <ToggleButton onClick={toggleNoise}>
           <Icon size="30" style={IconEngrave} />
@@ -127,7 +127,8 @@ function NoiseItem({ url, info, name }: NoiseItemProps) {
             <BsFillPlayFill size="20" style={IconEngrave} />
           )}
         </ToggleButton>
-        {isPlaying && isShowing && (
+        {isPlaying && (
+          //  isShowing &&
           <NoiseVolumeController audio={audio.current} name={name} />
         )}
       </Container>

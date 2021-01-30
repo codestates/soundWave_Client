@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { MouseEvent, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import { RootState } from "../../reducer";
@@ -12,6 +12,7 @@ import Footer from "./Footer";
 import { RiCloseFill } from "react-icons/ri";
 import Err from "./Err";
 import { useHistory } from "react-router-dom";
+import OthersHistory from "./OthersHistory";
 export type ContainerProps = {
   isOpened: boolean;
 };
@@ -74,8 +75,11 @@ function SideBar() {
       history.push("/");
     }, 500);
   }
+  function stop(e: MouseEvent) {
+    e.stopPropagation();
+  }
   return (
-    <Container isOpened={isSideBarOpened}>
+    <Container isOpened={isSideBarOpened} onClick={stop}>
       <CloseButton onClick={close}>
         <RiCloseFill color="black" />
       </CloseButton>
@@ -84,6 +88,7 @@ function SideBar() {
         <GroupForm />
         <History />
         <Recommend />
+        <OthersHistory />
         <Footer />
       </Contents>
       {errorMessage && <Err message={errorMessage} />}
