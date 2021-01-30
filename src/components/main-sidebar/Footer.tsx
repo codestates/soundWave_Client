@@ -37,8 +37,6 @@ function Footer() {
   function click() {
     (async () => {
       await logout();
-      dispatch(setAccessToken(""));
-      dispatch(setUser({} as User));
       window.location.href = "/";
     })();
   }
