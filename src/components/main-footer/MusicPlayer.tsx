@@ -306,6 +306,7 @@ function MusicPlayer() {
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [lastVolume, setLastVolume] = useState(0);
+
   useEffect(() => {
     const { current } = audio;
     current.autoplay = true;
@@ -314,19 +315,13 @@ function MusicPlayer() {
       setIsPlaying(true);
       setCurrentTime(current.currentTime);
       setDuration(current.duration);
-      current.volume = 0.5;
     };
     const changeTime = () => {
       setCurrentTime(current.currentTime);
     };
-    const changeVolume = () => {
-      dispatch(setMusicVolume(current.volume * 100));
-    };
-    current.addEventListener("volumechange", changeVolume);
     current.addEventListener("loadeddata", setData);
     current.addEventListener("timeupdate", changeTime);
     return () => {
-      current.removeEventListener("volumechange", changeVolume);
       current.removeEventListener("loadeddata", setData);
       current.removeEventListener("timeupdate", changeTime);
     };
@@ -340,6 +335,22 @@ function MusicPlayer() {
       current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
     }
   }, [musicUrl]);
+  useEffect(() => {
+    const { current } = audio;
+    current.volume = volume / 100;
+  }, [volume]);
+  function ChangeVolume(e: ChangeEvent<HTMLInputElement>) {
+    dispatch(setMusicVolume(parseInt(e.target.value)));
+  }
+
+  function mute() {
+    const { current } = audio;
+    setLastVolume(current.volume * 100);
+    dispatch(setMusicVolume(0));
+  }
+  function turnOn() {
+    dispatch(setMusicVolume(lastVolume));
+  }
   function pause() {
     audio.current.pause();
     setIsPlaying(false);
@@ -351,16 +362,7 @@ function MusicPlayer() {
   function ChangeCurrentTime(e: ChangeEvent<HTMLInputElement>) {
     audio.current.currentTime = Number(e.target.value);
   }
-  function ChangeVolume(e: ChangeEvent<HTMLInputElement>) {
-    audio.current.volume = Number(e.target.value) / 100;
-  }
-  function mute() {
-    setLastVolume(audio.current.volume);
-    audio.current.volume = 0;
-  }
-  function turnOn() {
-    audio.current.volume = lastVolume;
-  }
+
   return (
     <Container musicUrl={musicUrl}>
       <Top isPlaying={isPlaying} />

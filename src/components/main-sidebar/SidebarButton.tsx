@@ -1,8 +1,6 @@
 import { BsReverseLayoutSidebarInsetReverse } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import styled, { css } from "styled-components";
-import { RootState } from "../../reducer";
-import { openSideBar } from "../../reducer/sideBarReducer";
 type ContainerProps = {
   isSideBarOpen: boolean;
   isSearchOpen: boolean;
@@ -21,21 +19,15 @@ const Container = styled.div<ContainerProps>`
   transition:opacity 0.5s;
 `;
 function SidebarButton() {
-  const dispatch = useDispatch();
-  const isSideBarOpen = useSelector(
-    (state: RootState) => state.sideBar.isSideBarOpen
-  );
-  const isSearchOpen = useSelector(
-    (state: RootState) => state.musicSearch.isSearchOpen
-  );
+  const history = useHistory();
   function open() {
-    dispatch(openSideBar());
+    history.push("/side");
   }
   return (
     <Container
-      onMouseEnter={open}
-      isSideBarOpen={isSideBarOpen}
-      isSearchOpen={isSearchOpen}
+      onClick={open}
+      isSideBarOpen={history.location.pathname === "/side"}
+      isSearchOpen={history.location.pathname === "/search"}
     >
       <BsReverseLayoutSidebarInsetReverse size="40" />
     </Container>

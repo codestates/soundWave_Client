@@ -1,7 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import { RootState } from "../../reducer";
-import { closeSideBar, hideSideBar } from "../../reducer/sideBarReducer";
 import SideBar, { ContainerProps } from "./SideBar";
 
 const Container = styled.div<ContainerProps>`
@@ -20,18 +19,11 @@ const Container = styled.div<ContainerProps>`
   transition:opacity 0.5s;
 `;
 function SideBarModal() {
-  const dispatch = useDispatch();
   const isSideBarOpened = useSelector(
     (state: RootState) => state.sideBar.isSideBarOpened
   );
-  function close() {
-    dispatch(hideSideBar());
-    setTimeout(() => {
-      dispatch(closeSideBar());
-    }, 500);
-  }
   return (
-    <Container onClick={close} isOpened={isSideBarOpened}>
+    <Container isOpened={isSideBarOpened}>
       <SideBar />
     </Container>
   );

@@ -72,29 +72,35 @@ function NoiseItem({ url, info, name }: NoiseItemProps) {
   const isPlaying = useSelector(
     (state: RootState) => state.footer.noiseList[name].picked
   );
+  const volume = useSelector(
+    (state: RootState) => state.footer.noiseList[name].volume
+  );
   const [isShowing, setIsShowing] = useState<boolean>();
-  const audio = useRef<HTMLAudioElement>(null!);
+  const audio = useRef<HTMLAudioElement>(new Audio());
+
   useEffect(() => {
-    audio.current = new Audio(
-      `${SW_API_URL}/tracks/${url}/stream?client_id=${SW_CLIENT_ID}`
-    );
-    audio.current.volume = 0.5;
-    audio.current.addEventListener("ended", startNoise);
-    return () => {
-      audio.current.removeEventListener("ended", startNoise);
-    };
+    const { current } = audio;
+    current.src = `${SW_API_URL}/tracks/${url}/stream?client_id=${SW_CLIENT_ID}`;
+    current.loop = true;
   }, [url]);
-  function startNoise() {
-    audio.current.currentTime = 30;
-    audio.current.play();
-  }
-  function toggleNoise() {
-    if (audio.current.paused) {
-      startNoise();
-      dispatch(turnOnNoise(name));
+  useEffect(() => {
+    const { current } = audio;
+    if (isPlaying) {
+      current.currentTime = 30;
+      current.play();
     } else {
-      audio.current.pause();
+      current.pause();
+    }
+  }, [isPlaying]);
+  useEffect(() => {
+    const { current } = audio;
+    current.volume = volume / 100;
+  }, [volume]);
+  function toggleNoise() {
+    if (isPlaying) {
       dispatch(turnOffNoise(name));
+    } else {
+      dispatch(turnOnNoise(name));
     }
   }
   function showNoiseVolumeController() {
