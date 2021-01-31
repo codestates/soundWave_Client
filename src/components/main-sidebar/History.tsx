@@ -13,11 +13,15 @@ const Container = styled.div`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-bottom: 3px;
 `;
 const Title = styled.div`
   color: white;
 `;
 const Count = styled.div`
+  display: flex;
+  align-items: flex-end;
+  font-size: 12px;
   color: white;
 `;
 const GroupsContainer = styled.div`
