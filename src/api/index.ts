@@ -80,7 +80,7 @@ export async function getGroups(accessToken: string, userId: number) {
   }
 }
 export async function deleteGroup(accessToken: string, groupId: number) {
-  const { data } = await axios.delete(`${API_URL}/groups/delete/${groupId}`, {
+  await axios.delete(`${API_URL}/groups/delete/${groupId}`, {
     headers: {
       authorization: accessToken,
     },
