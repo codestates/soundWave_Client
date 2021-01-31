@@ -63,6 +63,7 @@ export const IconEngrave = {
     "drop-shadow(0px -1.5px 1px #000000) drop-shadow(0.5px 0.7px 1px #c3c3c3)",
 };
 type NoiseItemProps = {
+  id: number;
   url: string;
   info: [string, IconType];
   name: string;
