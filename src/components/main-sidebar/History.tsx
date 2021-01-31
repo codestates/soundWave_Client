@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getGroups } from "../../api";
 import { RootState } from "../../reducer";
-import { setGroupList } from "../../reducer/sideBarReducer";
+import { setGroupList, setIndex } from "../../reducer/sideBarReducer";
 import GroupItem from "./GroupItem";
 import { RiFileForbidFill } from "react-icons/ri";
 const Container = styled.div`
@@ -82,19 +82,22 @@ function History() {
   );
   const userId = useSelector((state: RootState) => state.sideBar.user.userId);
   const groupList = useSelector((state: RootState) => state.sideBar.groupList);
-  const [index, setIndex] = useState(0);
+  const weather = useSelector((state: RootState) => state.sideBar.weather);
+  const myListIndex = useSelector(
+    (state: RootState) => state.sideBar.myListIndex
+  );
   const [slide, setSlide] = useState(false);
   useEffect(() => {
     (async () => {
       if (userId) {
         const { data } = await getGroups(accessToken, userId);
-        dispatch(setGroupList(data));
+        dispatch(setGroupList(data.filter((el) => el.weather === weather)));
       }
     })();
-  }, [accessToken, userId, dispatch]);
+  }, [accessToken, userId, dispatch, weather]);
 
   function getNowPage() {
-    return parseInt(`${index / 3}`) + 1;
+    return parseInt(`${myListIndex / 3}`) + 1;
   }
   function getAllPage() {
     return parseInt(`${(groupList.length - 1) / 3}`) + 1;
@@ -103,11 +106,11 @@ function History() {
     setSlide(true);
     setTimeout(() => {
       setSlide(false);
-      let res = index + 3;
+      let res = myListIndex + 3;
       if (res >= groupList.length) {
         res = 0;
       }
-      setIndex(res);
+      dispatch(setIndex(res));
     }, 100);
   }
   return (
@@ -116,7 +119,7 @@ function History() {
         <Title>My List</Title>
         {groupList.length !== 0 && (
           <Count>
-            {getNowPage()}/{getAllPage()}{" "}
+            {getNowPage()}/{getAllPage()}
           </Count>
         )}
       </Header>
@@ -125,7 +128,7 @@ function History() {
           <>
             <Groups>
               {(() => {
-                const start = index;
+                const start = myListIndex;
                 const end = start + 3;
                 const groups = [];
                 for (let i = start; i < end; i++) {

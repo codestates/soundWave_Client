@@ -116,7 +116,11 @@ function SearchForm() {
   const isContinue = useRef(false);
   const audio = useRef(new Audio());
   useEffect(() => {
-    audio.current.src = `${sampleUrl}?client_id=${SW_CLIENT_ID}`;
+    if (sampleUrl) {
+      audio.current.src = `${sampleUrl}?client_id=${SW_CLIENT_ID}`;
+    } else {
+      audio.current.src = "";
+    }
   }, [sampleUrl]);
   useEffect(() => {
     const sampleAudio = audio.current;

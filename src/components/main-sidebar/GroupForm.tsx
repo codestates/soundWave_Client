@@ -152,7 +152,9 @@ function GroupForm() {
       try {
         const { data } = await getGroups(accessToken, userId);
         setGroupName("");
-        return dispatch(setGroupList(data));
+        const group = data.filter((el) => el.weather === weather);
+        dispatch(setGroupList(group));
+        return;
       } catch (error) {
         return dispatch(setErr(error.response.data.data));
       }

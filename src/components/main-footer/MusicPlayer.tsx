@@ -334,7 +334,7 @@ function MusicPlayer() {
       }
       current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
     } else {
-      current.src = `${musicUrl}`;
+      current.src = "";
     }
   }, [musicUrl]);
   useEffect(() => {

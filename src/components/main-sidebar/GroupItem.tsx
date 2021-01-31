@@ -12,6 +12,8 @@ import {
 } from "../../reducer/footerReducer";
 import { pickMusic } from "../../reducer/musicSearchReducer";
 import { Group, setGroupList } from "../../reducer/sideBarReducer";
+import { weathers } from "./GroupForm";
+
 type ContainerProps = {
   init: boolean;
   slide: boolean;
@@ -43,6 +45,7 @@ const Container = styled.div<ContainerProps>`
     width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
   opacity: 0;
   transform: translateX(300px);
@@ -115,6 +118,7 @@ function GroupItem({
   groupName,
   slide,
   groupId,
+  weather,
 }: GroupItemProps) {
   const dispatch = useDispatch();
   const accessToken = useSelector(
@@ -148,10 +152,19 @@ function GroupItem({
       }
     })();
   }
+
   return (
     <>
       {groupName ? (
         <Container onClick={choose} init={init} slide={slide}>
+          {(() => {
+            for (let i = 0; i < weathers.length; i++) {
+              if (weathers[i].name === weather) {
+                const Icon = weathers[i].Icon;
+                return <Icon color="black" />;
+              }
+            }
+          })()}
           <p>{groupName}</p>
           <DeleteButton onClick={clickDelete}>delete</DeleteButton>
         </Container>

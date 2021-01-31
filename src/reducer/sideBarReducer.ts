@@ -19,6 +19,7 @@ const initialState = {
   weather: "hot",
   groupList: [] as Group[],
   recommendedUserId: 0,
+  myListIndex: 0,
 };
 const sideBarSlice = createSlice({
   name: "sideBar",
@@ -48,6 +49,9 @@ const sideBarSlice = createSlice({
     setRecommendedUser(state, { payload }: PayloadAction<number>) {
       state.recommendedUserId = payload;
     },
+    setIndex(state, { payload }: PayloadAction<number>) {
+      state.myListIndex = payload;
+    },
   },
 });
 export const {
@@ -59,5 +63,6 @@ export const {
   setWeather,
   setGroupList,
   setRecommendedUser,
+  setIndex,
 } = sideBarSlice.actions;
 export default sideBarSlice.reducer;

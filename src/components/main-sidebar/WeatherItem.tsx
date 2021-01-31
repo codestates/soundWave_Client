@@ -2,7 +2,7 @@ import { MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import { RootState } from "../../reducer";
-import { setWeather } from "../../reducer/sideBarReducer";
+import { setIndex, setWeather } from "../../reducer/sideBarReducer";
 import { Weather } from "./GroupForm";
 type ContainerProps = {
   isPicked: boolean;
@@ -39,6 +39,7 @@ function WeatherItem({ name, Icon }: Weather) {
   function click(e: MouseEvent) {
     e.stopPropagation();
     dispatch(setWeather(name));
+    dispatch(setIndex(0));
   }
   return (
     <Container isPicked={weather === name} onClick={click}>
