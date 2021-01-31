@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { GiSoundWaves } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
 import { RecommendRes } from "../../api";
@@ -10,7 +11,7 @@ import {
 } from "../../reducer/footerReducer";
 import { pickMusic } from "../../reducer/musicSearchReducer";
 type ContainerProps = {
-  isShow: boolean;
+  init: boolean;
   slide: boolean;
 };
 
@@ -45,25 +46,48 @@ const Container = styled.div<ContainerProps>`
   }
   opacity: 0;
   transform: translateX(130px);
-  ${({ isShow }) =>
-    isShow &&
+  ${({ init }) =>
+    init &&
     css`
-      transition: all 0.5s;
+      transition: all 0.2s;
       opacity: 1;
       transform: translateX(0);
     `}
   ${({ slide }) =>
     slide &&
     css`
-      transition: all 0.5s;
+      transition: all 0.2s;
       opacity: 0;
-      transform: translateX(-130px);
+      transform: translateX(-300px);
     `}
   overflow: hidden;
 `;
-const NoContents = styled.div`
+const NoContents = styled.div<ContainerProps>`
   width: 30%;
+  background-color: rgba(255, 255, 255, 0.158);
+  border-radius: 20px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  opacity: 0;
+  transform: translateX(300px);
+  ${({ init }) =>
+    init &&
+    css`
+      transition: all 0.2s;
+      opacity: 1;
+      transform: translateX(0);
+    `}
+  ${({ slide }) =>
+    slide &&
+    css`
+      transition: all 0.2s;
+      opacity: 0;
+      transform: translateX(-300px);
+    `}
 `;
 const Img = styled.img`
   border: 1px solid white;
@@ -81,10 +105,10 @@ function OthersGroupItem({
   user,
 }: GroupItemProps) {
   const dispatch = useDispatch();
-  const [isShow, setIsShow] = useState(false);
+  const [init, setInit] = useState(false);
   useEffect(() => {
     setTimeout(() => {
-      setIsShow(true);
+      setInit(true);
     }, 100);
   }, []);
   function choose() {
@@ -100,12 +124,14 @@ function OthersGroupItem({
   return (
     <>
       {groupname ? (
-        <Container onClick={choose} isShow={isShow} slide={slide}>
+        <Container onClick={choose} init={init} slide={slide}>
           <Img src={user.profile} alt="" />
           <p>{groupname}</p>
         </Container>
       ) : (
-        <NoContents />
+        <NoContents init={init} slide={slide}>
+          <GiSoundWaves size="40" />
+        </NoContents>
       )}
     </>
   );

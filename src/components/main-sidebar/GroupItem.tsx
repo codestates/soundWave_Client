@@ -1,4 +1,5 @@
 import { MouseEvent, useEffect, useState } from "react";
+import { GiSoundWaves } from "react-icons/gi";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import { deleteGroup, getGroups } from "../../api";
@@ -12,7 +13,7 @@ import {
 import { pickMusic } from "../../reducer/musicSearchReducer";
 import { Group, setGroupList } from "../../reducer/sideBarReducer";
 type ContainerProps = {
-  isShow: boolean;
+  init: boolean;
   slide: boolean;
 };
 
@@ -44,26 +45,50 @@ const Container = styled.div<ContainerProps>`
     text-overflow: ellipsis;
   }
   opacity: 0;
-  transform: translateX(130px);
-  ${({ isShow }) =>
-    isShow &&
+  transform: translateX(300px);
+  ${({ init }) =>
+    init &&
     css`
-      transition: all 0.5s;
+      transition: all 0.2s;
       opacity: 1;
       transform: translateX(0);
     `}
   ${({ slide }) =>
     slide &&
     css`
-      transition: all 0.5s;
+      transition: all 0.2s;
       opacity: 0;
-      transform: translateX(-130px);
+      transform: translateX(-300px);
     `}
+
   overflow: hidden;
 `;
-const NoContents = styled.div`
+const NoContents = styled.div<ContainerProps>`
   width: 30%;
+  background-color: rgba(255, 255, 255, 0.158);
+  border-radius: 20px;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  opacity: 0;
+  transform: translateX(300px);
+  ${({ init }) =>
+    init &&
+    css`
+      transition: all 0.2s;
+      opacity: 1;
+      transform: translateX(0);
+    `}
+  ${({ slide }) =>
+    slide &&
+    css`
+      transition: all 0.2s;
+      opacity: 0;
+      transform: translateX(-300px);
+    `}
 `;
 const DeleteButton = styled.p`
   position: absolute;
@@ -96,10 +121,10 @@ function GroupItem({
     (state: RootState) => state.sideBar.accessToken
   );
   const userId = useSelector((state: RootState) => state.sideBar.user.userId);
-  const [isShow, setIsShow] = useState(false);
+  const [init, setInit] = useState(false);
   useEffect(() => {
     setTimeout(() => {
-      setIsShow(true);
+      setInit(true);
     }, 100);
   }, []);
   function choose() {
@@ -126,12 +151,14 @@ function GroupItem({
   return (
     <>
       {groupName ? (
-        <Container onClick={choose} isShow={isShow} slide={slide}>
+        <Container onClick={choose} init={init} slide={slide}>
           <p>{groupName}</p>
           <DeleteButton onClick={clickDelete}>delete</DeleteButton>
         </Container>
       ) : (
-        <NoContents />
+        <NoContents init={init} slide={slide}>
+          <GiSoundWaves size="40" />
+        </NoContents>
       )}
     </>
   );

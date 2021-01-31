@@ -5,9 +5,11 @@ import { RootState } from "../../reducer";
 import { BiUserX } from "react-icons/bi";
 import { getOtherGroups, RecommendRes } from "../../api";
 import OthersGroupItem from "./OthersGroupItem";
-const Container = styled.div``;
+const Container = styled.div`
+  height: 100px;
+  width: 95%;
+`;
 const Header = styled.div`
-  padding: 10px 10px 0 10px;
   display: flex;
   justify-content: space-between;
 `;
@@ -18,7 +20,6 @@ const Count = styled.div`
   color: white;
 `;
 const GroupsContainer = styled.div`
-  margin-top: 10px;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -34,7 +35,7 @@ const Groups = styled.div`
 const NextButton = styled.div`
   cursor: pointer;
   position: relative;
-  right: -10px;
+  right: -30px;
   border: 30px solid white;
   border-top-color: transparent;
   border-right-color: transparent;
@@ -55,7 +56,7 @@ const NoContents = styled.div`
   left: 0;
   right: 0;
   margin: auto;
-  width: 90%;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   display: flex;
@@ -102,7 +103,7 @@ function OthersHistory() {
         res = 0;
       }
       setIndex(res);
-    }, 500);
+    }, 100);
   }
   return (
     <Container>

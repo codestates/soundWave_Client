@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import LoginIcon from "./LoginIcon";
 const Container = styled.div`
-  height: 130px;
+  height: 100px;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  & p {
+    margin: 0;
+  }
 `;
 const Row = styled.div``;
 function Login() {
