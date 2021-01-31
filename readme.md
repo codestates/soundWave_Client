@@ -1,7 +1,7 @@
 <p align="center">
 <img alt="logo" src="https://user-images.githubusercontent.com/68503014/106308629-511dd400-62a4-11eb-9eaf-1ed1d62fa00b.png" width="500px"/>
 </p>
-<h2 align="center">백색 소음 조합 스트리밍 사이트<br><a href="">soundWave</a>입니다!</h2>
+<h2 align="center">백색 소음 조합 스트리밍 사이트<br><a href="https://www.sounds-wave.com">soundWave</a>입니다!</h2>
 
 
 <p align="center">
