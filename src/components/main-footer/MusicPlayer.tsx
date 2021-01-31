@@ -329,12 +329,12 @@ function MusicPlayer() {
   useEffect(() => {
     const { current } = audio;
     if (musicUrl) {
-      if (current.src) {
+      if (current.src !== window.location.href) {
         setIsPlaying(false);
       }
       current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
     } else {
-      current.src = "";
+      current.src = `${musicUrl}`;
     }
   }, [musicUrl]);
   useEffect(() => {

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-type Noise = { picked: boolean; volume: number };
+type Noise = { id: number; picked: boolean; volume: number };
 type FooterState = {
   noiseList: Record<string, Noise>;
   musicVolume: number;
@@ -7,22 +7,28 @@ type FooterState = {
 const initialState: FooterState = {
   noiseList: {
     rain: {
-      picked: false,
-      volume: 50,
-    },
-    drive: {
+      id: 1,
       picked: false,
       volume: 50,
     },
     wave: {
-      picked: false,
-      volume: 50,
-    },
-    night: {
+      id: 2,
       picked: false,
       volume: 50,
     },
     campfire: {
+      id: 3,
+      picked: false,
+      volume: 50,
+    },
+    drive: {
+      id: 4,
+      picked: false,
+      volume: 50,
+    },
+
+    night: {
+      id: 5,
       picked: false,
       volume: 50,
     },

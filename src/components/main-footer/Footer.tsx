@@ -56,6 +56,7 @@ function Footer() {
   const noiselist = noises.map((noise) => (
     <NoiseItem
       key={noise.name}
+      id={noise.id}
       url={noise.url}
       info={icons[noise.name]}
       name={noise.name}

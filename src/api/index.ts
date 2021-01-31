@@ -3,6 +3,7 @@ import { SW_API_URL, SW_CLIENT_ID } from "../const";
 import { Group, User } from "../reducer/sideBarReducer";
 const API_URL = process.env.REACT_APP_API_URL;
 export type Noise = {
+  id: number;
   name: string;
   url: string;
 };
@@ -101,6 +102,12 @@ export type RecommendRes = {
 };
 export async function getRecommends() {
   const { data } = await axios.get<RecommendRes[]>(`${API_URL}/recommend`);
+  return data;
+}
+export async function getRecommendsByNoises(noises: number[]) {
+  const { data } = await axios.get<RecommendRes[]>(`${API_URL}/recommend`, {
+    params: { noise: noises },
+  });
   return data;
 }
 export async function getOtherGroups(userId: number) {

@@ -20,25 +20,8 @@ const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  & p {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 12px;
-    cursor: pointer;
-    margin: 5px;
-    &:hover {
-      color: #35addd;
-      & span {
-        color: white;
-      }
-    }
-    & span {
-      color: red;
-    }
-  }
 `;
+
 const Contents = styled.div`
   /* border: 1px solid black; */
   width: 300px;
@@ -68,6 +51,24 @@ const Input = styled.input`
   width: 180px;
   padding: 15px;
   border-radius: 10px;
+`;
+const Option = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 5px;
+  &:hover {
+    color: #35addd;
+    & span {
+      color: white;
+    }
+  }
+  & span {
+    color: red;
+  }
 `;
 const WeatherContainer = styled.div`
   position: absolute;
@@ -177,8 +178,8 @@ function GroupForm() {
             onChange={ChangeInput}
           />
         </Contents>
-        <p onClick={click}>
-          어떤 날씨에 듣기 좋을까요? (<span>날씨 선택</span>)
+        <Option onClick={click}>
+          어떤 (<span>날씨</span>)에 듣기 좋을지 선택해주세요
           <WeatherContainer>
             <Weathers isShow={isShow}>
               {weathers.map((weather) => (
@@ -186,7 +187,7 @@ function GroupForm() {
               ))}
             </Weathers>
           </WeatherContainer>
-        </p>
+        </Option>
       </Container>
     </>
   );
