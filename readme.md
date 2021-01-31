@@ -44,7 +44,21 @@
 | :nerd_face: 박윤철 | FrontEnd|[medium](https://medium.com/a-record-than-a-memory)          | [@mrsimplelife](https://github.com/mrsimplelife) |
 
 ### 기능
-## 기본 노이즈 선택, 볼륨 조절, 메인 디자인 변경
-![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bcc2750c-3a0a-4b7e-a4a9-1cac77549ce3/__.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bcc2750c-3a0a-4b7e-a4a9-1cac77549ce3/__.gif)
+#### 기본 노이즈 선택, 볼륨 조절, 메인 디자인 변경
+![1](https://user-images.githubusercontent.com/22779951/106398827-6dfb0880-6458-11eb-9782-74fee810986a.gif)
+#### 음원 검색 및 미리 듣기
+![2](https://user-images.githubusercontent.com/22779951/106398832-73f0e980-6458-11eb-8006-32980696e890.gif)
+#### 선택 음원 재생
+![3](https://user-images.githubusercontent.com/22779951/106398835-75221680-6458-11eb-90c3-dfa902e1f900.gif)
+#### 구글 로그인
+![4](https://user-images.githubusercontent.com/22779951/106398838-75baad00-6458-11eb-93fb-820aae2cc269.gif)
+#### 페이스북 로그인
+#### 그룹 저장(컨셉 날씨 지정),  동일 그룹네임 처리 불가 모달 노출
+![5](https://user-images.githubusercontent.com/22779951/106398839-76534380-6458-11eb-93b1-6ef6aa2bcebd.gif)
+#### 날씨 별 나의 그룹 리스트 확인, 선택 재생 및 그룹 삭제
+![6](https://user-images.githubusercontent.com/22779951/106398841-77847080-6458-11eb-959c-8ccefd5967b7.gif)
+#### 현재 날씨와 어울리는 추천 목록 확인, 해당 유저 그룹 목록 확인
+
+#### 로그아웃
 
 
