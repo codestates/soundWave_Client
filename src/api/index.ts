@@ -85,7 +85,6 @@ export async function deleteGroup(accessToken: string, groupId: number) {
       authorization: accessToken,
     },
   });
-  console.log(data);
 }
 export type RecommendRes = {
   groupcombMusic: { musicUrl: string };
