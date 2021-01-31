@@ -82,7 +82,7 @@
 <h3 align="center">페이스북 로그인</h3>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/22779951/106398838-75baad00-6458-11eb-93fb-820aae2cc269.gif" alt="text" />
+  <img src="https://user-images.githubusercontent.com/68503014/106399430-de575900-645b-11eb-868a-ef8562bbef9e.gif" alt="text" />
 </p>
 
 ---
