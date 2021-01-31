@@ -7,6 +7,7 @@ import "./mainRoad.css";
 import NightEffect from "./nightEffect";
 import { useSelector } from "react-redux";
 import { RootState } from "../../reducer";
+import { useEffect, useState } from "react";
 
 function MainRoad() {
   const isRainPicked = useSelector(
@@ -21,21 +22,64 @@ function MainRoad() {
   const isWavePicked = useSelector(
     (state: RootState) => state.footer.noiseList["wave"].picked
   );
-  // const isCampfiePicked = useSelector(
-  //   (state: RootState) => state.footer.noiseList["campfire"].picked
-  // );
+  const isCampfirePicked = useSelector(
+    (state: RootState) => state.footer.noiseList["campfire"].picked
+  );
+
+  const [waveToggle, setwaveToggle] = useState(false);
+  const [nightToggle, setnightToggle] = useState(false);
+  const [carToggle, setcarToggle] = useState(false);
+  const [roadMoveHandle, setroadMoveHandle] = useState(false);
+  const [lampMoveHandle, setlampMoveHandle] = useState(false);
+
+  useEffect(() => {
+    if (isWavePicked) {
+      setwaveToggle(true);
+    }
+  }, [isWavePicked]);
+
+  useEffect(() => {
+    if (isNightPicked) {
+      setnightToggle(true);
+    }
+  }, [isNightPicked]);
+
+  useEffect(() => {
+    if (isDrivePicked) {
+      setcarToggle(true);
+    }
+  }, [isDrivePicked]);
+
   return (
     <div className="mainRoad">
-      {isNightPicked && <NightEffect />}
+      {nightToggle && (
+        <NightEffect
+          isNightPicked={isNightPicked}
+          setnightToggle={setnightToggle}
+        />
+      )}
       <img
         id="road"
-        className={isDrivePicked ? "roadMoving" : ""}
+        className={roadMoveHandle ? "roadMoving" : ""}
         src={longRoadimage}
-        alt=""
+        alt="road"
       />
-      {isDrivePicked && <BounceCar />}
-      <StreetLamp isDrivePicked={isDrivePicked} />
-      {isWavePicked && <WaveEffect />}
+      {carToggle && (
+        <BounceCar
+          isDrivePicked={isDrivePicked}
+          setcarToggle={setcarToggle}
+          setroadMoveHandle={setroadMoveHandle}
+          setlampMoveHandle={setlampMoveHandle}
+        />
+      )}
+      <StreetLamp
+        isDrivePicked={isDrivePicked}
+        isCampfiePicked={isCampfirePicked}
+        lampMoveHandle={lampMoveHandle}
+      />
+      {waveToggle && (
+        <WaveEffect isWavePicked={isWavePicked} setwaveToggle={setwaveToggle} />
+      )}
       {isRainPicked && <Raintest />}
     </div>
   );
