@@ -45,9 +45,6 @@
 
 ## Main skills
 <h3 align="center">기본 노이즈 선택, 볼륨 조절, 메인 디자인 변경</h3>
-
-
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/22779951/106398827-6dfb0880-6458-11eb-9782-74fee810986a.gif" alt="text" />
 </p>
@@ -55,8 +52,6 @@
 ---
 
 <h3 align="center">음원 검색 및 미리 듣기</h3>
-
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/22779951/106398832-73f0e980-6458-11eb-8006-32980696e890.gif" alt="text" />
 </p>
@@ -64,31 +59,27 @@
 ---
 
 <h3 align="center">선택 음원 재생</h3>
-
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/22779951/106398835-75221680-6458-11eb-90c3-dfa902e1f900.gif" alt="text" />
+  <img src="https://user-images.githubusercontent.com/22779951/106399659-596d3f00-645d-11eb-859d-4400c34b06e6.gif" alt="text" />
 </p>
 
 ---
 
 <h3 align="center">구글 로그인</h3>
-
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/22779951/106398838-75baad00-6458-11eb-93fb-820aae2cc269.gif" alt="text" />
+  <img src="https://user-images.githubusercontent.com/22779951/106399658-583c1200-645d-11eb-9604-ab11cec30500.gif" alt="text" />
 </p>
 
 ---
 
 <h3 align="center">페이스북 로그인</h3>
-
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106399430-de575900-645b-11eb-868a-ef8562bbef9e.gif" alt="text" />
+  <img src="https://user-images.githubusercontent.com/22779951/106399657-583c1200-645d-11eb-804a-3db4e57cfbcf.gif" alt="text" />
 </p>
 
 ---
 
 <h3 align="center">그룹 저장(컨셉 날씨 지정),  동일 그룹네임 처리 불가 모달 노출</h3>
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/22779951/106398839-76534380-6458-11eb-93b1-6ef6aa2bcebd.gif" alt="text" />
 </p>
@@ -96,7 +87,6 @@
 ---
 
 <h3 align="center">날씨 별 나의 그룹 리스트 확인, 선택 재생 및 그룹 삭제</h3>
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/22779951/106398841-77847080-6458-11eb-959c-8ccefd5967b7.gif" alt="text" />
 </p>
@@ -104,7 +94,6 @@
 ---
 
 <h3 align="center">현재 날씨와 어울리는 추천 목록 확인, 해당 유저 그룹 목록 확인</h3>
-
 <p align="center">
   <img src="https://user-images.githubusercontent.com/22779951/106399007-8881b180-6459-11eb-8240-2b5891f37760.gif" alt="text" />
 </p>
@@ -112,8 +101,7 @@
 ---
 
 <h3 align="center">로그아웃</h3>
-
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/22779951/106399009-8c153880-6459-11eb-9994-6c1d7c6fead8.gif)" alt="text" />
+  <img src="https://user-images.githubusercontent.com/22779951/106399647-51150400-645d-11eb-835f-987cf2539666.gif" alt="text" />
 </p>
 
