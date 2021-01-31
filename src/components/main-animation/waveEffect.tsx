@@ -3,12 +3,20 @@ import waveMiddle from "../../images/wave_middle.png";
 import waveLast from "../../images/wave_last.png";
 import "./waveEffect.css";
 
-function WaveEffect() {
+type WaveEffectProps = {
+  isWavePicked: boolean;
+  setwaveToggle: Function;
+};
+
+function WaveEffect({ isWavePicked, setwaveToggle }: WaveEffectProps) {
   return (
-    <div className="waveEffect">
-      <img id="waveLast" src={waveLast} alt="" />
-      <img id="waveMiddle" src={waveMiddle} alt="" />
-      <img id="waveFirst" src={waveFirst} alt="" />
+    <div
+      className={`waveEffect ${isWavePicked ? "" : "waveEffectEnd"}`}
+      onAnimationEnd={() => setwaveToggle(false)}
+    >
+      <img id="waveLast" src={waveLast} alt="waveLast" />
+      <img id="waveMiddle" src={waveMiddle} alt="waveMiddle" />
+      <img id="waveFirst" src={waveFirst} alt="waveFirst" />
     </div>
   );
 }

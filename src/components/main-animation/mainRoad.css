@@ -23,8 +23,14 @@
 
   /*클릭시 도로이동*/
 }
+
 .roadMoving {
   animation: transform 0.3s linear infinite;
+}
+
+.roadMovingEnd {
+  animation: transform 0.3s linear 50;
+  animation: none;
 }
 
 @keyframes transform {
