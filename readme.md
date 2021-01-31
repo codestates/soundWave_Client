@@ -53,7 +53,7 @@
 
 <h3 align="center">음원 검색 및 미리 듣기</h3>
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/22779951/106398832-73f0e980-6458-11eb-8006-32980696e890.gif" alt="text" />
+  <img src="https://user-images.githubusercontent.com/22779951/106399864-7d7d5000-645e-11eb-819a-d74ee1bb8054.gif" alt="text" />
 </p>
 
 ---
