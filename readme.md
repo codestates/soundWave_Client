@@ -45,20 +45,50 @@
 
 ### 기능
 #### 기본 노이즈 선택, 볼륨 조절, 메인 디자인 변경
-![1](https://user-images.githubusercontent.com/22779951/106398827-6dfb0880-6458-11eb-9782-74fee810986a.gif)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106398827-6dfb0880-6458-11eb-9782-74fee810986a.gif" alt="text" />
+</p>
+
 #### 음원 검색 및 미리 듣기
-![2](https://user-images.githubusercontent.com/22779951/106398832-73f0e980-6458-11eb-8006-32980696e890.gif)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106398832-73f0e980-6458-11eb-8006-32980696e890.gif" alt="text" />
+</p>
+
 #### 선택 음원 재생
-![3](https://user-images.githubusercontent.com/22779951/106398835-75221680-6458-11eb-90c3-dfa902e1f900.gif)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106398835-75221680-6458-11eb-90c3-dfa902e1f900.gif" alt="text" />
+</p>
+
 #### 구글 로그인
-![4](https://user-images.githubusercontent.com/22779951/106398838-75baad00-6458-11eb-93fb-820aae2cc269.gif)
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106398838-75baad00-6458-11eb-93fb-820aae2cc269.gif" alt="text" />
+</p>
+
 #### 페이스북 로그인
 #### 그룹 저장(컨셉 날씨 지정),  동일 그룹네임 처리 불가 모달 노출
-![5](https://user-images.githubusercontent.com/22779951/106398839-76534380-6458-11eb-93b1-6ef6aa2bcebd.gif)
-#### 날씨 별 나의 그룹 리스트 확인, 선택 재생 및 그룹 삭제
-![6](https://user-images.githubusercontent.com/22779951/106398841-77847080-6458-11eb-959c-8ccefd5967b7.gif)
-#### 현재 날씨와 어울리는 추천 목록 확인, 해당 유저 그룹 목록 확인
-![7](https://user-images.githubusercontent.com/22779951/106399007-8881b180-6459-11eb-8240-2b5891f37760.gif)
-#### 로그아웃
-![8](https://user-images.githubusercontent.com/22779951/106399009-8c153880-6459-11eb-9994-6c1d7c6fead8.gif)
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106398839-76534380-6458-11eb-93b1-6ef6aa2bcebd.gif" alt="text" />
+</p>
+
+#### 날씨 별 나의 그룹 리스트 확인, 선택 재생 및 그룹 삭제
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106398841-77847080-6458-11eb-959c-8ccefd5967b7.gif" alt="text" />
+</p>
+
+#### 현재 날씨와 어울리는 추천 목록 확인, 해당 유저 그룹 목록 확인
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106399007-8881b180-6459-11eb-8240-2b5891f37760.gif" alt="text" />
+</p>
+
+#### 로그아웃
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/22779951/106399009-8c153880-6459-11eb-9994-6c1d7c6fead8.gif)" alt="text" />
+</p>
