@@ -27,6 +27,10 @@ function MainRoad() {
   );
 
   const [waveToggle, setwaveToggle] = useState(false);
+  const [nightToggle, setnightToggle] = useState(false);
+  const [carToggle, setcarToggle] = useState(false);
+  const [roadMoveHandle, setroadMoveHandle] = useState(false);
+  const [lampMoveHandle, setlampMoveHandle] = useState(false);
 
   useEffect(() => {
     if (isWavePicked) {
@@ -34,19 +38,44 @@ function MainRoad() {
     }
   }, [isWavePicked]);
 
+  useEffect(() => {
+    if (isNightPicked) {
+      setnightToggle(true);
+    }
+  }, [isNightPicked]);
+
+  useEffect(() => {
+    if (isDrivePicked) {
+      setcarToggle(true);
+    }
+  }, [isDrivePicked]);
+
   return (
     <div className="mainRoad">
-      {isNightPicked && <NightEffect />}
+      {nightToggle && (
+        <NightEffect
+          isNightPicked={isNightPicked}
+          setnightToggle={setnightToggle}
+        />
+      )}
       <img
         id="road"
-        className={isDrivePicked ? "roadMoving" : ""}
+        className={roadMoveHandle ? "roadMoving" : ""}
         src={longRoadimage}
         alt="road"
       />
-      {isDrivePicked && <BounceCar />}
+      {carToggle && (
+        <BounceCar
+          isDrivePicked={isDrivePicked}
+          setcarToggle={setcarToggle}
+          setroadMoveHandle={setroadMoveHandle}
+          setlampMoveHandle={setlampMoveHandle}
+        />
+      )}
       <StreetLamp
         isDrivePicked={isDrivePicked}
         isCampfiePicked={isCampfirePicked}
+        lampMoveHandle={lampMoveHandle}
       />
       {waveToggle && (
         <WaveEffect isWavePicked={isWavePicked} setwaveToggle={setwaveToggle} />

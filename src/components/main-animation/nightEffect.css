@@ -2,8 +2,8 @@
   position: absolute;
   /* top: -60px;
   left: -95px; */
-  top: -290px;
-  left: -15px;
+  top: -320px;
+  left: 50px;
   margin: 0;
   padding: 0;
   width: 11cm;
@@ -11,15 +11,29 @@
   /* width: 10cm;
   height: 10cm; */
   border-radius: 50%;
-  overflow: hidden;
-  animation: spin 200s linear infinite;
+  /* overflow: hidden; */
+  animation: fadeIn 3s;
   /* border-style: solid;
   border-color: aqua; */
 }
 
-@keyframes spin {
+.nightEffectEnd {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
   100% {
-    transform: rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  100% {
+    opacity: 0;
   }
 }
 
@@ -31,7 +45,14 @@
   padding: 0;
   width: 11cm;
   height: 11cm;
-  border-radius: 50%;
+  /* border-radius: 50%; */
+  animation: spin 200s linear infinite;
   /* border-style: solid;
   border-color: purple; */
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }

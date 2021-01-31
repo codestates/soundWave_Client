@@ -7,9 +7,10 @@ import FireEffect from "./fireEffect";
 type StreetLampProps = {
   isDrivePicked: boolean;
   isCampfiePicked: boolean;
+  lampMoveHandle: boolean;
 };
 
-function StreetLamp({ isDrivePicked, isCampfiePicked }: StreetLampProps) {
+function StreetLamp({ isCampfiePicked, lampMoveHandle }: StreetLampProps) {
   const [fireToggle, setfireToggle] = useState(false);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ function StreetLamp({ isDrivePicked, isCampfiePicked }: StreetLampProps) {
 
   return (
     <div
-      className={`lampAndLight ${isDrivePicked ? "lampAndLightMoving" : ""}`}
+      className={`lampAndLight ${lampMoveHandle ? "lampAndLightMoving" : ""}`}
     >
       <img id="streetLamp" src={streetLampImage} alt="streetLamp" />
       {fireToggle && (

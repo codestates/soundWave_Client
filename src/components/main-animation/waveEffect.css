@@ -13,7 +13,7 @@
 }
 
 .waveEffectEnd {
-  animation: waveAppear 8s, fadeout 1s linear;
+  animation: waveAppear 8s linear, fadeout 1s;
 }
 
 @keyframes fadeout {
