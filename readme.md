@@ -58,7 +58,7 @@
 #### 날씨 별 나의 그룹 리스트 확인, 선택 재생 및 그룹 삭제
 ![6](https://user-images.githubusercontent.com/22779951/106398841-77847080-6458-11eb-959c-8ccefd5967b7.gif)
 #### 현재 날씨와 어울리는 추천 목록 확인, 해당 유저 그룹 목록 확인
-
+![7](https://user-images.githubusercontent.com/22779951/106399007-8881b180-6459-11eb-8240-2b5891f37760.gif)
 #### 로그아웃
-
+![8](https://user-images.githubusercontent.com/22779951/106399009-8c153880-6459-11eb-9994-6c1d7c6fead8.gif)
 
