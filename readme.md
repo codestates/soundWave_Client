@@ -43,23 +43,8 @@
 | :drooling_face: 최정호 | FrontEnd| [velog](https://velog.io/@jeongho3786)          | [@jeongho3786](https://github.com/jeongho3786) |
 | :nerd_face: 박윤철 | FrontEnd|[medium](https://medium.com/a-record-than-a-memory)          | [@mrsimplelife](https://github.com/mrsimplelife) |
 
-### 현재상태
-![Jan-21-2021 12-53-11](https://user-images.githubusercontent.com/22779951/105278032-05a26080-5be8-11eb-8e3f-5db115153dbd.gif)
-![Jan-24-2021 07-40-33](https://user-images.githubusercontent.com/22779951/105616083-8e531380-5e17-11eb-9a19-7aed82d1311b.gif)
-### 환경변수 파일 필요합니다.
+### 기능
+## 기본 노이즈 선택, 볼륨 조절, 메인 디자인 변경
+![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bcc2750c-3a0a-4b7e-a4a9-1cac77549ce3/__.gif](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/bcc2750c-3a0a-4b7e-a4a9-1cac77549ce3/__.gif)
 
-`.env.development.local`
-```
-REACT_APP_API_URL=https://localhost:3000
-REACT_APP_SW_API_URL=https://api.soundcloud.com
-REACT_APP_SW_CLIENT_ID=비밀~
-```
-
-### 폴더 루트에 cert.pem, key.pem 필요합니다.
-
-### 실행
-```
-npm i
-npm start
-```
 
