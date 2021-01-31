@@ -38,8 +38,9 @@
 
 `.env.development.local`
 ```
-REACT_APP_API_URL=http://localhost:3001
-REACT_APP_REDIRECT_URL=https://localhost:3000
+REACT_APP_API_URL=https://localhost:3000
+REACT_APP_SW_API_URL=https://api.soundcloud.com
+REACT_APP_SW_CLIENT_ID=비밀~
 ```
 
 ### 폴더 루트에 cert.pem, key.pem 필요합니다.
@@ -47,7 +48,6 @@ REACT_APP_REDIRECT_URL=https://localhost:3000
 ### 실행
 ```
 npm i
-npm run server
 npm start
 ```
 
