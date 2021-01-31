@@ -5,9 +5,8 @@ const Img = styled.img`
   width: 50px;
   height: 50px;
   cursor: pointer;
-  margin: 10px;
+  margin: 0 10px;
   border: 1px solid white;
-  overflow: hidden;
   border-radius: 50%;
   &:active {
     transform: scale(0.8);

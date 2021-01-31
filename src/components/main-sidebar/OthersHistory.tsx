@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { getGroups } from "../../api";
 import { RootState } from "../../reducer";
-import { setGroupList, setIndex } from "../../reducer/sideBarReducer";
-import GroupItem from "./GroupItem";
-import { RiFileForbidFill } from "react-icons/ri";
+import { BiUserX } from "react-icons/bi";
+import { getOtherGroups, RecommendRes } from "../../api";
+import OthersGroupItem from "./OthersGroupItem";
 const Container = styled.div`
   height: 100px;
   width: 95%;
@@ -75,29 +74,26 @@ const NoContents = styled.div`
   }
 `;
 
-function History() {
+function OthersHistory() {
   const dispatch = useDispatch();
-  const accessToken = useSelector(
-    (state: RootState) => state.sideBar.accessToken
+  const userId = useSelector(
+    (state: RootState) => state.sideBar.recommendedUserId
   );
-  const userId = useSelector((state: RootState) => state.sideBar.user.userId);
-  const groupList = useSelector((state: RootState) => state.sideBar.groupList);
-  const weather = useSelector((state: RootState) => state.sideBar.weather);
-  const myListIndex = useSelector(
-    (state: RootState) => state.sideBar.myListIndex
-  );
+  const [groupList, setGroupList] = useState([] as RecommendRes[]);
+  const [index, setIndex] = useState(0);
   const [slide, setSlide] = useState(false);
   useEffect(() => {
     (async () => {
       if (userId) {
-        const { data } = await getGroups(accessToken, userId);
-        dispatch(setGroupList(data.filter((el) => el.weather === weather)));
+        const { data } = await getOtherGroups(userId);
+        setGroupList(data);
+        setIndex(0);
       }
     })();
-  }, [accessToken, userId, dispatch, weather]);
+  }, [userId, dispatch]);
 
   function getNowPage() {
-    return parseInt(`${myListIndex / 3}`) + 1;
+    return parseInt(`${index / 3}`) + 1;
   }
   function getAllPage() {
     return parseInt(`${(groupList.length - 1) / 3}`) + 1;
@@ -106,20 +102,20 @@ function History() {
     setSlide(true);
     setTimeout(() => {
       setSlide(false);
-      let res = myListIndex + 3;
+      let res = index + 3;
       if (res >= groupList.length) {
         res = 0;
       }
-      dispatch(setIndex(res));
+      setIndex(res);
     }, 100);
   }
   return (
     <Container>
       <Header>
-        <Title>My List</Title>
+        <Title>Recommended User's List</Title>
         {groupList.length !== 0 && (
           <Count>
-            {getNowPage()}/{getAllPage()}
+            {getNowPage()}/{getAllPage()}{" "}
           </Count>
         )}
       </Header>
@@ -128,12 +124,12 @@ function History() {
           <>
             <Groups>
               {(() => {
-                const start = myListIndex;
+                const start = index;
                 const end = start + 3;
                 const groups = [];
                 for (let i = start; i < end; i++) {
                   groups.push(
-                    <GroupItem key={i} {...groupList[i]} slide={slide} />
+                    <OthersGroupItem key={i} {...groupList[i]} slide={slide} />
                   );
                 }
                 return groups;
@@ -143,12 +139,12 @@ function History() {
           </>
         ) : (
           <NoContents>
-            <RiFileForbidFill size="30" />
-            <span>No Contents</span>
+            <BiUserX size="30" />
+            <span>Not selected</span>
           </NoContents>
         )}
       </GroupsContainer>
     </Container>
   );
 }
-export default History;
+export default OthersHistory;

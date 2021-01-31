@@ -2,8 +2,7 @@ import styled from "styled-components";
 import { Container, IconEngrave } from "./NoiseItem";
 import { IoMusicalNotesSharp } from "react-icons/io5";
 import { TiPlusOutline } from "react-icons/ti";
-import { useDispatch } from "react-redux";
-import { openSearch } from "../../reducer/musicSearchReducer";
+import { useHistory } from "react-router-dom";
 const Border = styled.div`
   border: 1px white dashed;
   border-radius: 10px;
@@ -33,9 +32,9 @@ const Circle = styled.div`
   }
 `;
 function PlusMusicButton() {
-  const dispatch = useDispatch();
+  const history = useHistory();
   function openSearchModal() {
-    dispatch(openSearch());
+    history.push("/search");
   }
   return (
     <>

@@ -2,13 +2,10 @@ import { Container } from "./NoResult";
 import { IoIosImages } from "react-icons/io";
 import styled, { css } from "styled-components";
 import { useDispatch } from "react-redux";
-import {
-  closeSearch,
-  pickMusic,
-  listenSample,
-} from "../../reducer/musicSearchReducer";
+import { pickMusic, listenSample } from "../../reducer/musicSearchReducer";
 import { Music } from "../../api";
 import { FiPlay, FiSquare } from "react-icons/fi";
+import { useHistory } from "react-router-dom";
 type RowProps = {
   isSelected: boolean;
   isPicked: boolean;
@@ -78,6 +75,7 @@ type ResultProps = {
   isPicked: boolean;
 };
 function Result({ music, isSelected, isPicked }: ResultProps) {
+  const history = useHistory();
   const dispatch = useDispatch();
   function listen() {
     if (isSelected) {
@@ -88,7 +86,7 @@ function Result({ music, isSelected, isPicked }: ResultProps) {
   }
   function pick() {
     dispatch(pickMusic(music.stream_url));
-    dispatch(closeSearch());
+    history.push("/");
   }
   return (
     <Container>

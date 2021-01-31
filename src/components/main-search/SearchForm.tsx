@@ -116,13 +116,17 @@ function SearchForm() {
   const isContinue = useRef(false);
   const audio = useRef(new Audio());
   useEffect(() => {
-    audio.current.src = `${sampleUrl}?client_id=${SW_CLIENT_ID}`;
+    if (sampleUrl) {
+      audio.current.src = `${sampleUrl}?client_id=${SW_CLIENT_ID}`;
+    } else {
+      audio.current.src = "";
+    }
   }, [sampleUrl]);
   useEffect(() => {
     const sampleAudio = audio.current;
     setIsInit(true);
     const play = () => {
-      sampleAudio.volume = 0.5;
+      sampleAudio.currentTime = sampleAudio.duration / 5;
       sampleAudio.play();
     };
     sampleAudio.addEventListener("loadeddata", play);

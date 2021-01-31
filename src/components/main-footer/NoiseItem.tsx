@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { IconType } from "react-icons";
 import { BsFillPlayFill, BsStopFill } from "react-icons/bs";
@@ -63,6 +63,7 @@ export const IconEngrave = {
     "drop-shadow(0px -1.5px 1px #000000) drop-shadow(0.5px 0.7px 1px #c3c3c3)",
 };
 type NoiseItemProps = {
+  id: number;
   url: string;
   info: [string, IconType];
   name: string;
@@ -72,43 +73,49 @@ function NoiseItem({ url, info, name }: NoiseItemProps) {
   const isPlaying = useSelector(
     (state: RootState) => state.footer.noiseList[name].picked
   );
-  const [isShowing, setIsShowing] = useState<boolean>();
-  const audio = useRef<HTMLAudioElement>(null!);
+  const volume = useSelector(
+    (state: RootState) => state.footer.noiseList[name].volume
+  );
+  // const [isShowing, setIsShowing] = useState<boolean>();
+  const audio = useRef<HTMLAudioElement>(new Audio());
+
   useEffect(() => {
-    audio.current = new Audio(
-      `${SW_API_URL}/tracks/${url}/stream?client_id=${SW_CLIENT_ID}`
-    );
-    audio.current.volume = 0.5;
-    audio.current.addEventListener("ended", startNoise);
-    return () => {
-      audio.current.removeEventListener("ended", startNoise);
-    };
+    const { current } = audio;
+    current.src = `${SW_API_URL}/tracks/${url}/stream?client_id=${SW_CLIENT_ID}`;
+    current.loop = true;
   }, [url]);
-  function startNoise() {
-    audio.current.currentTime = 30;
-    audio.current.play();
-  }
-  function toggleNoise() {
-    if (audio.current.paused) {
-      startNoise();
-      dispatch(turnOnNoise(name));
+  useEffect(() => {
+    const { current } = audio;
+    if (isPlaying) {
+      current.currentTime = 30;
+      current.play();
     } else {
-      audio.current.pause();
+      current.pause();
+    }
+  }, [isPlaying]);
+  useEffect(() => {
+    const { current } = audio;
+    current.volume = volume / 100;
+  }, [volume]);
+  function toggleNoise() {
+    if (isPlaying) {
       dispatch(turnOffNoise(name));
+    } else {
+      dispatch(turnOnNoise(name));
     }
   }
-  function showNoiseVolumeController() {
-    setIsShowing(true);
-  }
-  function hideNoiseVolumeController() {
-    setIsShowing(false);
-  }
+  // function showNoiseVolumeController() {
+  //   setIsShowing(true);
+  // }
+  // function hideNoiseVolumeController() {
+  //   setIsShowing(false);
+  // }
   const [displayName, Icon] = info;
   return (
     <>
       <Container
-        onMouseEnter={showNoiseVolumeController}
-        onMouseLeave={hideNoiseVolumeController}
+      // onMouseEnter={showNoiseVolumeController}
+      // onMouseLeave={hideNoiseVolumeController}
       >
         <ToggleButton onClick={toggleNoise}>
           <Icon size="30" style={IconEngrave} />
@@ -121,7 +128,8 @@ function NoiseItem({ url, info, name }: NoiseItemProps) {
             <BsFillPlayFill size="20" style={IconEngrave} />
           )}
         </ToggleButton>
-        {isPlaying && isShowing && (
+        {isPlaying && (
+          //  isShowing &&
           <NoiseVolumeController audio={audio.current} name={name} />
         )}
       </Container>

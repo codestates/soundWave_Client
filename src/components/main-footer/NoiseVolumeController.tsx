@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 const VolumeInput = styled.input`
   appearance: none;
-  opacity: 0.1;
+  opacity: 0.5;
   height: 5px;
   width: 80px;
   background: black;
@@ -44,9 +44,7 @@ function NoiseVolumeController({ audio, name }: NoiseVolumeControllerProps) {
     (state: RootState) => state.footer.noiseList[name].volume
   );
   function setNoiseVolume(e: ChangeEvent<HTMLInputElement>) {
-    const volume = parseInt(e.target.value);
-    audio.volume = volume / 100;
-    dispatch(setVolume({ name, volume }));
+    dispatch(setVolume({ name, volume: parseInt(e.target.value) }));
   }
 
   return (

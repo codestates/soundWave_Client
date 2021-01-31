@@ -1,9 +1,8 @@
 import { FaWindowClose } from "react-icons/fa";
 import { MouseEvent, useCallback, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { closeSearch } from "../../reducer/musicSearchReducer";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
+import { useHistory } from "react-router-dom";
 const Container = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
@@ -27,7 +26,7 @@ const CloseButton = styled.div`
 `;
 
 function SearchModal() {
-  const dispatch = useDispatch();
+  const history = useHistory();
 
   const closeModal = useCallback(
     function (e: MouseEvent | KeyboardEvent) {
@@ -35,10 +34,10 @@ function SearchModal() {
         (e instanceof KeyboardEvent && e.key === "Escape") ||
         e.type === "click"
       ) {
-        dispatch(closeSearch());
+        history.push("/");
       }
     },
-    [dispatch]
+    [history]
   );
   useEffect(() => {
     window.addEventListener("keydown", closeModal);
