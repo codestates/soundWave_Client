@@ -332,8 +332,10 @@ function MusicPlayer() {
       if (current.src) {
         setIsPlaying(false);
       }
+      current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
+    } else {
+      current.src = "";
     }
-    current.src = `${musicUrl}?client_id=${SW_CLIENT_ID}`;
   }, [musicUrl]);
   useEffect(() => {
     const { current } = audio;
