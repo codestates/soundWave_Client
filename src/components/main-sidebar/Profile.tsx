@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { RootState } from "../../reducer";
 
 const Container = styled.div`
-  height: 130px;
+  height: 100px;
   color: white;
   display: flex;
   justify-content: center;

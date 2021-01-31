@@ -15,12 +15,15 @@ import { IconType } from "react-icons";
 import { getGroups, postGroups } from "../../api";
 
 const Container = styled.div`
-  /* border: 1px solid white; */
+  height: 100px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   & p {
+    position: relative;
+    display: flex;
+    justify-content: center;
     color: white;
     font-size: 12px;
     cursor: pointer;
@@ -67,10 +70,9 @@ const Input = styled.input`
   border-radius: 10px;
 `;
 const WeatherContainer = styled.div`
-  box-sizing: border-box;
+  position: absolute;
+  bottom: -30px;
   height: 30px;
-  display: flex;
-  justify-content: center;
   overflow: hidden;
 `;
 type WeathersProps = {
@@ -81,12 +83,10 @@ const Weathers = styled.div<WeathersProps>`
   color: white;
   height: 100%;
   transform: translateY(-100%);
-  opacity: 0;
   ${({ isShow }) =>
     isShow &&
     css`
       transform: translateY(0);
-      opacity: 1;
     `}
   transition: all 1s;
 `;
@@ -179,14 +179,14 @@ function GroupForm() {
         </Contents>
         <p onClick={click}>
           어떤 날씨에 듣기 좋을까요? (<span>날씨 선택</span>)
+          <WeatherContainer>
+            <Weathers isShow={isShow}>
+              {weathers.map((weather) => (
+                <WeatherItem key={weather.name} {...weather} />
+              ))}
+            </Weathers>
+          </WeatherContainer>
         </p>
-        <WeatherContainer>
-          <Weathers isShow={isShow}>
-            {weathers.map((weather) => (
-              <WeatherItem key={weather.name} {...weather} />
-            ))}
-          </Weathers>
-        </WeatherContainer>
       </Container>
     </>
   );

@@ -53,6 +53,27 @@ const Contents = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  & section {
+    /* border: white 1px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+const AuthSection = styled.section`
+  height: 15%;
+`;
+const SaveSection = styled.section`
+  height: 15%;
+`;
+const ListSection = styled.section`
+  height: 15%;
+`;
+const RecommendSection = styled.section`
+  height: 25%;
+`;
+const FooterSection = styled.section`
+  height: 10%;
 `;
 function SideBar() {
   const history = useHistory();
@@ -84,12 +105,22 @@ function SideBar() {
         <RiCloseFill color="black" />
       </CloseButton>
       <Contents>
-        {accessToken ? <Profile /> : <Login />}
-        <GroupForm />
-        <History />
-        <Recommend />
-        <OthersHistory />
-        <Footer />
+        <AuthSection>{accessToken ? <Profile /> : <Login />}</AuthSection>
+        <SaveSection>
+          <GroupForm />
+        </SaveSection>
+        <ListSection>
+          <History />
+        </ListSection>
+        <RecommendSection>
+          <Recommend />
+        </RecommendSection>
+        <ListSection>
+          <OthersHistory />
+        </ListSection>
+        <FooterSection>
+          <Footer />
+        </FooterSection>
       </Contents>
       {errorMessage && <Err message={errorMessage} />}
     </Container>

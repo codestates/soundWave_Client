@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getRecommends, RecommendRes } from "../../api";
 import RecommendItem from "./RecommendItem";
-const Container = styled.div``;
+const Container = styled.div`
+  width: 95%;
+`;
 const Header = styled.div`
-  padding: 10px 10px 0 10px;
   display: flex;
   justify-content: space-between;
 `;
@@ -12,14 +13,12 @@ const Title = styled.div`
   color: white;
 `;
 const RecommendContainer = styled.div`
-  /* border: 1px solid white; */
-  margin-top: 10px;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  height: 20vh;
+  height: 150px;
   &::-webkit-scrollbar {
     width: 10px;
   }

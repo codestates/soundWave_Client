@@ -1,3 +1,4 @@
+import { MouseEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import { RootState } from "../../reducer";
@@ -35,7 +36,8 @@ const Container = styled.div<ContainerProps>`
 function WeatherItem({ name, Icon }: Weather) {
   const dispatch = useDispatch();
   const weather = useSelector((state: RootState) => state.sideBar.weather);
-  function click() {
+  function click(e: MouseEvent) {
+    e.stopPropagation();
     dispatch(setWeather(name));
   }
   return (
