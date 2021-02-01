@@ -146,7 +146,8 @@ function GroupItem({
       await deleteGroup(accessToken, groupId);
       try {
         const { data } = await getGroups(accessToken, userId);
-        dispatch(setGroupList(data.filter((el) => el.weather === weather)));
+        const group = data.filter((el) => el.weather === weather);
+        dispatch(setGroupList(group));
       } catch {
         dispatch(setGroupList([]));
       }

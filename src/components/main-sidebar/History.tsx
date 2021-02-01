@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { getGroups } from "../../api";
@@ -95,13 +95,24 @@ function History() {
       }
     })();
   }, [accessToken, userId, dispatch, weather]);
+  const getNowPage = useCallback(
+    function () {
+      return parseInt(`${myListIndex / 3}`) + 1;
+    },
+    [myListIndex]
+  );
+  const getAllPage = useCallback(
+    function () {
+      return parseInt(`${(groupList.length - 1) / 3}`) + 1;
+    },
+    [groupList.length]
+  );
+  useEffect(() => {
+    if (getNowPage() > getAllPage()) {
+      dispatch(setIndex(myListIndex - 3));
+    }
+  }, [getNowPage, getAllPage, groupList, dispatch, myListIndex]);
 
-  function getNowPage() {
-    return parseInt(`${myListIndex / 3}`) + 1;
-  }
-  function getAllPage() {
-    return parseInt(`${(groupList.length - 1) / 3}`) + 1;
-  }
   function next() {
     setSlide(true);
     setTimeout(() => {
