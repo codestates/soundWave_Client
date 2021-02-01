@@ -17,21 +17,21 @@
   백색 소음을 대표하는 5가지 소음과<br><br>원하는 음원을 soundCloud 내에서 선택하고 나만의 플레이 리스트를 만들어보세요!
 </h3>
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/68503014/106512241-af50ee00-6514-11eb-94db-9d842070a0ae.jpeg" alt="text" width="700" />
+</p>
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/68503014/106512732-5766b700-6515-11eb-905a-481f1887a1e5.gif" alt="text" width="700" />
+</p>
 
 
-- 비, 파도, 모닥불, 주행, 야밤이 기본 소음으로 구현되어있습니다!
-- 소음 선택 시 자유자재로 바뀌는 메인을 감상해보세요!
-- 각 소리 별 볼륨 조절, 재생 및 중지가 가능합니다!
-- 음원을 추가버튼을 클릭하여 soundCloud에서 원하는 음원을 재생할 수 있습니다!
-- 가입 유저는 현재 재생중인 음원과 소음의 볼륨 및 설정 상태를 모두 저장할 수 있습니다!
-- 날씨또는 조합에 어울리는 그룹을 추천해드립니다!
-- 선택한 조합을 만든 유저의 모든 그룹을 확인할 수 있습니다!
 
 ## Tech Stacks
 -----
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106323719-33a83480-62bb-11eb-8692-76288a78f581.jpg" alt="text" width="700" />
+  <img src="https://user-images.githubusercontent.com/68503014/106513085-ce03b480-6515-11eb-80be-23cb1b400275.jpeg" alt="text" width="800" />
 </p>
 
 ## Member Info
