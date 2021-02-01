@@ -18,11 +18,11 @@
 </h3>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106512241-af50ee00-6514-11eb-94db-9d842070a0ae.jpeg" alt="text" width="1000" />
+  <img src="https://user-images.githubusercontent.com/68503014/106512241-af50ee00-6514-11eb-94db-9d842070a0ae.jpeg" alt="text" width="900" />
 </p>
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106515075-77e44080-6518-11eb-9526-e3b87ecb1c2f.gif" alt="text" />
+  <img src="https://user-images.githubusercontent.com/68503014/106515923-b1697b80-6519-11eb-8477-4a7b57193ef1.gif" alt="text" width="900" />
 </p>
 
 
@@ -31,7 +31,7 @@
 -----
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106513085-ce03b480-6515-11eb-80be-23cb1b400275.jpeg" alt="text" width="800" />
+  <img src="https://user-images.githubusercontent.com/68503014/106513085-ce03b480-6515-11eb-80be-23cb1b400275.jpeg" alt="text" width="900" />
 </p>
 
 ## Member Info
