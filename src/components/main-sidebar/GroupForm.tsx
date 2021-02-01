@@ -9,7 +9,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../reducer";
 import { ChangeEvent, useState } from "react";
-import { setErr, setGroupList } from "../../reducer/sideBarReducer";
+import { setErr, setGroupList, setIndex } from "../../reducer/sideBarReducer";
 import WeatherItem from "./WeatherItem";
 import { IconType } from "react-icons";
 import { getGroups, postGroups } from "../../api";
@@ -154,6 +154,7 @@ function GroupForm() {
         setGroupName("");
         const group = data.filter((el) => el.weather === weather);
         dispatch(setGroupList(group));
+        dispatch(setIndex(parseInt(`${(group.length - 1) / 3}`) * 3));
         return;
       } catch (error) {
         return dispatch(setErr(error.response.data.data));
