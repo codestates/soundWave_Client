@@ -13,7 +13,7 @@
 
 -----
 <p align="center">
-  Server 레포지토리는 <a href="https://github.com/codestates/soundWave_Serve">이곳</a>에서 확인할 수 있습니다!
+  Server 레포지토리는 <a href="https://github.com/codestates/soundWave_Server">이곳</a>에서 확인할 수 있습니다!
 </p>
 
 ## Service
