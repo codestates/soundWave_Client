@@ -31,7 +31,7 @@
 -----
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/68503014/106513085-ce03b480-6515-11eb-80be-23cb1b400275.jpeg" alt="text" width="900" />
+  <img src="https://user-images.githubusercontent.com/68503014/106665007-235cc600-65e9-11eb-9982-2c1f4a89717a.jpeg" alt="text" width="900" />
 </p>
 
 ## Member Info
