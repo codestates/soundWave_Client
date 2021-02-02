@@ -44,4 +44,4 @@
 | :nerd_face: 박윤철 | FrontEnd|[medium](https://medium.com/a-record-than-a-memory)          | [@mrsimplelife](https://github.com/mrsimplelife) |
 
 ## Main skills
-시연:)(https://www.notion.so/6-Daedam-soundwave-0e7b1b86aed54568809db5f429b83156#30a9a2d913724d1ab8703128dedd31b2)
+[시연:)](https://www.notion.so/6-Daedam-soundwave-0e7b1b86aed54568809db5f429b83156#30a9a2d913724d1ab8703128dedd31b2)
