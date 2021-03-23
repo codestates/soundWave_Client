@@ -11,10 +11,14 @@ import { pickMusic } from "../../reducer/musicSearchReducer";
 import { setRecommendedUser } from "../../reducer/sideBarReducer";
 import { icons } from "../main-footer/Footer";
 import { weathers } from "./GroupForm";
+import noUser from "../../images/no_user.svg";
+import { SyntheticEvent } from "react";
+
 const Img = styled.img`
   border-radius: 50%;
   width: 20px;
   height: 20px;
+  background-color: white;
 `;
 const Container = styled.div`
   cursor: pointer;
@@ -70,9 +74,13 @@ function RecommendItem({
     dispatch(setMusicVolume(musicVolume === -1 ? 50 : musicVolume));
     dispatch(setRecommendedUser(user.id));
   }
+  function handleImgError(event: SyntheticEvent) {
+    const target = event.target as HTMLImageElement;
+    target.src = noUser;
+  }
   return (
     <Container onClick={click}>
-      <Img src={user.profile} alt="" />
+      <Img src={user.profile} alt="프로필 사진" onError={handleImgError} />
       <Icons>
         {(() => {
           const noises = [];

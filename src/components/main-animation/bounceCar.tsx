@@ -1,7 +1,7 @@
 import "./bounceCar.css";
 import carFrameImage from "../../images/car_frame.png";
 import carWheelImage from "../../images/car_wheel.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type BounceCarProps = {
   isDrivePicked: boolean;

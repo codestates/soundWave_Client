@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SyntheticEvent, useEffect, useState } from "react";
 import { GiSoundWaves } from "react-icons/gi";
 import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
@@ -10,6 +10,8 @@ import {
   setMusicVolume,
 } from "../../reducer/footerReducer";
 import { pickMusic } from "../../reducer/musicSearchReducer";
+import noUser from "../../images/no_user.svg";
+
 type ContainerProps = {
   init: boolean;
   slide: boolean;
@@ -94,6 +96,7 @@ const Img = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  background-color: white;
 `;
 type GroupItemProps = RecommendRes & { slide: boolean };
 function OthersGroupItem({
@@ -120,12 +123,15 @@ function OthersGroupItem({
     dispatch(pickMusic(groupcombMusic.musicUrl));
     dispatch(setMusicVolume(musicVolume === -1 ? 50 : musicVolume));
   }
-
+  function handleImgError(event: SyntheticEvent) {
+    const target = event.target as HTMLImageElement;
+    target.src = noUser;
+  }
   return (
     <>
       {groupname ? (
         <Container onClick={choose} init={init} slide={slide}>
-          <Img src={user.profile} alt="" />
+          <Img src={user.profile} alt="프로필 사진" onError={handleImgError} />
           <p>{groupname}</p>
         </Container>
       ) : (
