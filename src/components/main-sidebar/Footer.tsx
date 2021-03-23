@@ -51,11 +51,9 @@ function Footer() {
   const accessToken = useSelector(
     (state: RootState) => state.sideBar.accessToken
   );
-  function click() {
-    (async () => {
-      await logout();
-      window.location.href = "/";
-    })();
+  async function click() {
+    await logout();
+    window.location.href = "/";
   }
   return (
     <Container>
