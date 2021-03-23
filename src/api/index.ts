@@ -1,7 +1,7 @@
 import axios from "axios";
-import { SW_API_URL, SW_CLIENT_ID } from "../const";
+import { API_URL, SW_API_URL, SW_CLIENT_ID } from "../const";
 import { Group, User } from "../reducer/sideBarReducer";
-const API_URL = process.env.REACT_APP_API_URL;
+
 export type Noise = {
   id: number;
   name: string;
@@ -13,7 +13,7 @@ export async function getNoises() {
       data: { noises },
     },
   } = await axios.get<{
-    data: { noises: Noise[] };
+    data: { noises: Noise[] };     
   }>(`${API_URL}/noises`);
   return noises;
 }
