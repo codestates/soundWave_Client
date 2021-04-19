@@ -2,6 +2,7 @@ import waveFirst from "../../images/wave_first.png";
 import waveMiddle from "../../images/wave_middle.png";
 import waveLast from "../../images/wave_last.png";
 import "./waveEffect.css";
+import { useRef } from "react";
 
 type WaveEffectProps = {
   isWavePicked: boolean;
@@ -9,14 +10,25 @@ type WaveEffectProps = {
 };
 
 function WaveEffect({ isWavePicked, setwaveToggle }: WaveEffectProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const checkEffectEnd = () => {
+    if (ref.current?.classList.contains("waveEffectEnd")) {
+      setwaveToggle(false);
+    }
+  };
+
   return (
     <div
-      className={`waveEffect ${isWavePicked ? "" : "waveEffectEnd"}`}
-      onAnimationEnd={() => setwaveToggle(false)}
+      className={isWavePicked ? "" : "waveEffectEnd"}
+      ref={ref}
+      onAnimationEnd={checkEffectEnd}
     >
-      <img id="waveLast" src={waveLast} alt="waveLast" />
-      <img id="waveMiddle" src={waveMiddle} alt="waveMiddle" />
-      <img id="waveFirst" src={waveFirst} alt="waveFirst" />
+      <div className="waveEffect">
+        <img id="waveLast" src={waveLast} alt="waveLast" />
+        <img id="waveMiddle" src={waveMiddle} alt="waveMiddle" />
+        <img id="waveFirst" src={waveFirst} alt="waveFirst" />
+      </div>
     </div>
   );
 }
