@@ -8,12 +8,10 @@
   padding: 0;
   overflow: hidden;
   animation: waveAppear 8s linear infinite;
-  /* border-style: solid;
-  border-color: aqua; */
 }
 
 .waveEffectEnd {
-  animation: waveAppear 8s linear, fadeout 1s;
+  animation: fadeout 1s linear;
 }
 
 @keyframes fadeout {
@@ -63,8 +61,6 @@
   width: 17cm;
   height: 10cm;
   animation: firstWave 15s linear infinite;
-  /* border-style: solid;
-  border-color: orange; */
 }
 
 @keyframes firstWave {
@@ -87,8 +83,6 @@
   width: 17cm;
   height: 10cm;
   animation: middleWave 10s linear infinite;
-  /* border-style: solid;
-  border-color: green; */
 }
 
 @keyframes middleWave {
@@ -111,8 +105,6 @@
   width: 17cm;
   height: 10cm;
   animation: lastWave 5s linear infinite;
-  /* border-style: solid;
-  border-color: red; */
 }
 
 @keyframes lastWave {

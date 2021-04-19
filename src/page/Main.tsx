@@ -27,7 +27,7 @@ function Main() {
   return (
     <Container>
       <SidebarButton />
-      {<MainRoad />}
+      <MainRoad />
       <Footer />
       <Route path="/search">
         <SearchModal />
