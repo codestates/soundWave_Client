@@ -6,37 +6,51 @@
   padding: 0;
   width: 7cm;
   height: 8cm;
-  /* border-style: solid;
-  border-color: white; */
-
-  /*클릭시 도로이동과 같이 가로등 이동*/
-  /*신호등과 도로이동이 끝나는 지점 비율 가로등 1: 도로 16.6*/
 }
 
-.lampAndLightMoving {
-  animation: lamptransform 5s linear infinite;
+.moveingToRight {
+  animation: lampToRight 1s linear;
 }
 
-@keyframes lamptransform {
-  0%,
+.moveingFromLeftToRight {
+  animation: lampFromLeftToRight 2.14s linear;
+}
+
+.moveingToMiddle {
+  animation: lampToMiddle 1s linear;
+}
+
+@keyframes lampToMiddle {
+  0% {
+    transform: translate(-250px, -144px);
+  }
+
   100% {
     transform: translate(0px, 0px);
   }
+}
 
-  20% {
+@keyframes lampToRight {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  100% {
     transform: translate(220px, 129px);
   }
+}
 
-  40% {
-    transform: translate(220px, -250px);
-  }
-
-  60% {
-    transform: translate(-250px, -250px);
-  }
-
-  80% {
+@keyframes lampFromLeftToRight {
+  0% {
     transform: translate(-250px, -144px);
+  }
+
+  50% {
+    transform: translate(0px, 0px);
+  }
+
+  100% {
+    transform: translate(220px, 119px);
   }
 }
 
@@ -47,8 +61,6 @@
   margin: 0;
   padding: 0;
   height: 20cm;
-  /* border-style: solid;
-  border-color: green; */
 }
 
 .lampLight {
@@ -60,8 +72,6 @@
   height: 4.9cm;
   width: 2.7cm;
   opacity: 0.6;
-  /* border-style: solid;
-  border-color: purple; */
 }
 
 .blinkStart {

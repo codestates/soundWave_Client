@@ -18,10 +18,6 @@
   height: 18cm;
   margin: 0;
   padding: 0;
-  /* border-style: solid;
-  border-color: orange; */
-
-  /*클릭시 도로이동*/
 }
 
 .roadMoving {
@@ -30,7 +26,6 @@
 
 .roadMovingEnd {
   animation: transform 0.3s linear 50;
-  animation: none;
 }
 
 @keyframes transform {
