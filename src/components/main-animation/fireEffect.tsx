@@ -4,18 +4,29 @@ import "./fireEffect.css";
 type FireEffectProps = {
   isCampfiePicked: boolean;
   setfireToggle: Function;
+  setfireEndCheck: Function;
 };
 
-function FireEffect({ isCampfiePicked, setfireToggle }: FireEffectProps) {
+function FireEffect({
+  isCampfiePicked,
+  setfireToggle,
+  setfireEndCheck,
+}: FireEffectProps) {
+  const changeEndState = () => {
+    setfireEndCheck(true);
+    return "fireEffectEnd";
+  };
+
   const changefireToggle = () => {
     if (!isCampfiePicked) {
+      setfireEndCheck(false);
       setfireToggle(false);
     }
   };
 
   return (
     <div
-      className={`fireEffect ${isCampfiePicked ? "" : "fireEffectEnd"} `}
+      className={`fireEffect ${isCampfiePicked ? "" : changeEndState()} `}
       onAnimationEnd={changefireToggle}
     >
       <img id="flameA" src={flame} alt="flameA" />

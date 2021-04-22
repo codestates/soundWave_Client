@@ -1,26 +1,12 @@
 .bounceCar {
   position: absolute;
-
-  /*정중앙, 차 위치*/
-  /* top: 120px;
-  left: 70px; */
-
-  /*차 출발 지점*/
   top: 250px;
   left: 300px;
-
-  /*차 도착 지점*/
-  /* top: -35px;
-  left: -200px; */
-
   margin: 0;
   padding: 0;
   width: 5cm;
   height: 5cm;
-  /* border-style: solid;
-  border-color: blue; */
   animation: carMovingStart 2s linear forwards;
-  /* animation: carMovingEnd 3s linear forwards; */
 }
 
 .carMovingStart {
@@ -59,8 +45,6 @@
   width: 18cm;
   height: 18cm;
   animation: bounce 0.5s linear infinite;
-  /* border-style: solid;
-  border-color: green; */
 }
 
 @keyframes bounce {
@@ -89,6 +73,4 @@
   padding: 0;
   width: 18cm;
   height: 18cm;
-  /* border-style: solid;
-  border-color: yellow; */
 }

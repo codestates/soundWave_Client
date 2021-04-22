@@ -31,6 +31,8 @@ function MainRoad() {
   const [carToggle, setcarToggle] = useState(false);
   const [roadMoveHandle, setroadMoveHandle] = useState(false);
   const [lampMoveHandle, setlampMoveHandle] = useState(false);
+  const [lampToggle, setlampToggle] = useState(true);
+  const [lampState, setlampState] = useState("middle");
 
   useEffect(() => {
     if (isWavePicked) {
@@ -49,6 +51,12 @@ function MainRoad() {
       setcarToggle(true);
     }
   }, [isDrivePicked]);
+
+  useEffect(() => {
+    if (lampState !== "middle") {
+      setlampToggle(true);
+    }
+  }, [lampToggle]);
 
   return (
     <div className="mainRoad">
@@ -72,11 +80,16 @@ function MainRoad() {
           setlampMoveHandle={setlampMoveHandle}
         />
       )}
-      <StreetLamp
-        isDrivePicked={isDrivePicked}
-        isCampfiePicked={isCampfirePicked}
-        lampMoveHandle={lampMoveHandle}
-      />
+      {lampToggle && (
+        <StreetLamp
+          isCampfiePicked={isCampfirePicked}
+          lampMoveHandle={lampMoveHandle}
+          lampState={lampState}
+          setlampState={setlampState}
+          setlampToggle={setlampToggle}
+          setroadMoveHandle={setroadMoveHandle}
+        />
+      )}
       {waveToggle && (
         <WaveEffect isWavePicked={isWavePicked} setwaveToggle={setwaveToggle} />
       )}

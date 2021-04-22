@@ -1,20 +1,13 @@
 .nightEffect {
   position: absolute;
-  /* top: -60px;
-  left: -95px; */
   top: -320px;
   left: 50px;
   margin: 0;
   padding: 0;
   width: 11cm;
   height: 11cm;
-  /* width: 10cm;
-  height: 10cm; */
   border-radius: 50%;
-  /* overflow: hidden; */
   animation: fadeIn 3s;
-  /* border-style: solid;
-  border-color: aqua; */
 }
 
 .nightEffectEnd {
@@ -45,10 +38,7 @@
   padding: 0;
   width: 11cm;
   height: 11cm;
-  /* border-radius: 50%; */
   animation: spin 200s linear infinite;
-  /* border-style: solid;
-  border-color: purple; */
 }
 
 @keyframes spin {

@@ -27,7 +27,6 @@ function BounceCar({
     }
 
     if (!isDrivePicked && isCarMiddle) {
-      setroadMoveHandle(false);
       setlampMoveHandle(false);
       setcarToggle(false);
     }
