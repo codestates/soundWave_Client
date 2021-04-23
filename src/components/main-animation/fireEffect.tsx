@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import flame from "../../images/flame.png";
 import "./fireEffect.css";
 
@@ -12,11 +13,6 @@ function FireEffect({
   setfireToggle,
   setfireEndCheck,
 }: FireEffectProps) {
-  const changeEndState = () => {
-    setfireEndCheck(true);
-    return "fireEffectEnd";
-  };
-
   const changefireToggle = () => {
     if (!isCampfiePicked) {
       setfireEndCheck(false);
@@ -24,9 +20,15 @@ function FireEffect({
     }
   };
 
+  useEffect(() => {
+    if (!isCampfiePicked) {
+      setfireEndCheck(true);
+    }
+  }, [isCampfiePicked]);
+
   return (
     <div
-      className={`fireEffect ${isCampfiePicked ? "" : changeEndState()} `}
+      className={`fireEffect ${isCampfiePicked ? "" : "fireEffectEnd"} `}
       onAnimationEnd={changefireToggle}
     >
       <img id="flameA" src={flame} alt="flameA" />

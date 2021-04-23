@@ -25,7 +25,7 @@
 }
 
 .roadMovingEnd {
-  animation: transform 0.3s linear 50;
+  animation: transform 0.55s linear infinite;
 }
 
 @keyframes transform {

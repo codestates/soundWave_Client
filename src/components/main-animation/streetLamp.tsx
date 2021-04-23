@@ -7,10 +7,12 @@ import FireEffect from "./fireEffect";
 type StreetLampProps = {
   isCampfiePicked: boolean;
   lampMoveHandle: boolean;
+  roadEndPoint: boolean;
   lampState: string;
   setlampToggle: Function;
   setlampState: Function;
   setroadMoveHandle: Function;
+  setroadEndPoint: Function;
 };
 
 function StreetLamp({
@@ -20,6 +22,8 @@ function StreetLamp({
   lampState,
   setlampState,
   setroadMoveHandle,
+  roadEndPoint,
+  setroadEndPoint,
 }: StreetLampProps) {
   const [fireToggle, setfireToggle] = useState(false);
   const [moveingToggle, setmoveingToggle] = useState(false);
@@ -56,6 +60,7 @@ function StreetLamp({
     }
 
     if (lampState === "end") {
+      setroadEndPoint(true);
       return "moveingToMiddle";
     }
 
@@ -95,6 +100,7 @@ function StreetLamp({
 
       if (lampRef.current?.classList.contains("moveingToMiddle")) {
         setlampState("middle");
+        setroadEndPoint(false);
         setroadMoveHandle(false);
         setmoveingToggle(false);
         return;

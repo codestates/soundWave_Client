@@ -13,11 +13,11 @@
 }
 
 .moveingFromLeftToRight {
-  animation: lampFromLeftToRight 2.14s linear;
+  animation: lampFromLeftToRight 2s linear;
 }
 
 .moveingToMiddle {
-  animation: lampToMiddle 1s linear;
+  animation: lampToMiddle 2s linear;
 }
 
 @keyframes lampToMiddle {
@@ -45,12 +45,8 @@
     transform: translate(-250px, -144px);
   }
 
-  50% {
-    transform: translate(0px, 0px);
-  }
-
   100% {
-    transform: translate(220px, 119px);
+    transform: translate(220px, 125px);
   }
 }
 
