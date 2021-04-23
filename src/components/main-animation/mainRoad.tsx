@@ -32,6 +32,7 @@ function MainRoad() {
   const [roadMoveHandle, setroadMoveHandle] = useState(false);
   const [lampMoveHandle, setlampMoveHandle] = useState(false);
   const [lampToggle, setlampToggle] = useState(true);
+  const [roadEndPoint, setroadEndPoint] = useState(false);
   const [lampState, setlampState] = useState("middle");
 
   useEffect(() => {
@@ -58,6 +59,14 @@ function MainRoad() {
     }
   }, [lampToggle]);
 
+  const checkRoadEndPoint = () => {
+    if (roadEndPoint) {
+      return "roadMovingEnd";
+    } else {
+      return "roadMoving";
+    }
+  };
+
   return (
     <div className="mainRoad">
       {nightToggle && (
@@ -68,7 +77,7 @@ function MainRoad() {
       )}
       <img
         id="road"
-        className={roadMoveHandle ? "roadMoving" : ""}
+        className={roadMoveHandle ? checkRoadEndPoint() : ""}
         src={longRoadimage}
         alt="road"
       />
@@ -85,6 +94,8 @@ function MainRoad() {
           isCampfiePicked={isCampfirePicked}
           lampMoveHandle={lampMoveHandle}
           lampState={lampState}
+          roadEndPoint={roadEndPoint}
+          setroadEndPoint={setroadEndPoint}
           setlampState={setlampState}
           setlampToggle={setlampToggle}
           setroadMoveHandle={setroadMoveHandle}
