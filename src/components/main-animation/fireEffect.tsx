@@ -26,6 +26,10 @@ function FireEffect({
     }
   }, [isCampfiePicked]);
 
+  useEffect(() => {
+    return setfireEndCheck(false);
+  });
+
   return (
     <div
       className={`fireEffect ${isCampfiePicked ? "" : "fireEffectEnd"} `}

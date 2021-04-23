@@ -84,8 +84,6 @@
   animation: swing 1.5s linear infinite alternate,
     fadeIn 0.9s linear infinite alternate;
   transform-origin: center 40px;
-  /* border-style: solid;
-  border-color: blue; */
 }
 
 @keyframes swing {
